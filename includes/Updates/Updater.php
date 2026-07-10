@@ -111,8 +111,9 @@ class Updater {
 		}
 
 		$plugin_slug = plugin_basename( $this->plugin_file );
+		$plugin_dir  = dirname( $plugin_slug );
 
-		if ( ! isset( $args->slug ) || $args->slug !== $plugin_slug ) {
+		if ( ! isset( $args->slug ) || ( $args->slug !== $plugin_slug && $args->slug !== $plugin_dir ) ) {
 			return $result;
 		}
 
