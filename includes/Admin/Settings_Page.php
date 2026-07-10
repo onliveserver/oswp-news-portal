@@ -87,6 +87,7 @@ class Settings_Page {
 					'adminUrl'       => admin_url( 'admin.php?page=oswp-posts' ),
 					'initialSection' => $this->get_initial_react_section(),
 					'siteName'       => get_bloginfo( 'name' ),
+					'version'        => Plugin::VERSION,
 				]
 			);
 		}

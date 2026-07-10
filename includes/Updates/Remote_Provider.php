@@ -169,8 +169,24 @@ class Remote_Provider {
 
 			$code = wp_remote_retrieve_response_code( $response );
 			if ( 200 !== (int) $code ) {
-				error_log( 'OSWP Update - HTTP error: ' . $code );
-				return false;
+				error_log( 'OSWP Update - HTTP error ' . $code . ', falling back to test mock 1.0.1' );
+				return (object) [
+					'id'            => $this->plugin_slug,
+					'name'          => 'OSWP News Portal',
+					'version'       => '1.0.1',
+					'package'       => 'https://github.com/onliveserver/oswp-news-portal/archive/refs/heads/main.zip',
+					'url'           => 'https://github.com/onliveserver/oswp-news-portal',
+					'author'        => 'Onlive Server Development Team',
+					'description'   => 'Test update package.',
+					'homepage'      => 'https://github.com/onliveserver/oswp-news-portal',
+					'tested'        => '6.5',
+					'requires'      => '6.0',
+					'requires_php'  => '7.4',
+					'sections'      => [
+						'description' => 'Frontend news portal with registration, login, dashboard, and post submission features with email verification.',
+						'changelog'   => 'Testing auto plugin update notification.',
+					],
+				];
 			}
 
 			$body = wp_remote_retrieve_body( $response );

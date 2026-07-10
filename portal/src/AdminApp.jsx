@@ -1048,19 +1048,29 @@ export default function AdminApp() {
       ) : (
         <div className="oswp-admin-layout">
           <aside className="oswp-admin-sidebar">
-            {sections.map((item) => (
-              <button
-                type="button"
-                key={item.id}
-                className={`oswp-admin-sidebar-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => {
-                  setNotice('');
-                  setSection(item.id);
-                }}
-              >
-                <span>{item.label}</span>
-              </button>
-            ))}
+            <div className="oswp-admin-sidebar-links">
+              {sections.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={`oswp-admin-sidebar-link ${activeSection === item.id ? 'active' : ''}`}
+                  onClick={() => {
+                    setNotice('');
+                    setSection(item.id);
+                  }}
+                >
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+            <div className="oswp-admin-sidebar-footer">
+              <div className="oswp-admin-version-info">
+                <span>Version {window.oswpAdmin?.version || '0.9.0'}</span>
+                <span>
+                  by <a href="https://onliveserver.com/" target="_blank" rel="noopener noreferrer">Onlive Server</a>
+                </span>
+              </div>
+            </div>
           </aside>
           <main className="oswp-admin-content">
             {error ? <div className="oswp-alert oswp-alert-error">{error}</div> : null}
