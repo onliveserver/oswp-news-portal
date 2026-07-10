@@ -1,0 +1,413 @@
+/**
+ * Admin styles for OSWP Posts settings.
+ */
+
+/* ============================================
+   Variables
+   ============================================ */
+:root {
+    --oswp-admin-primary: #2271b1;
+    --oswp-admin-primary-hover: #135e96;
+    --oswp-admin-success: #00a32a;
+    --oswp-admin-warning: #dba617;
+    --oswp-admin-danger: #d63638;
+    --oswp-admin-border: #c3c4c7;
+    --oswp-admin-border-light: #e2e4e7;
+    --oswp-admin-bg: #f0f0f1;
+    --oswp-admin-white: #ffffff;
+    --oswp-admin-text: #1d2327;
+    --oswp-admin-text-light: #646970;
+    --oswp-admin-radius: 6px;
+    --oswp-admin-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --oswp-admin-shadow-hover: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   Layout & Dashboard
+   ============================================ */
+.oswp-admin-dashboard {
+    margin-top: 20px;
+}
+
+.oswp-admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.oswp-admin-stat-box {
+    background: var(--oswp-admin-white);
+    padding: 20px 24px;
+    border: 1px solid var(--oswp-admin-border-light);
+    border-left: 4px solid var(--oswp-admin-primary);
+    border-radius: var(--oswp-admin-radius);
+    box-shadow: var(--oswp-admin-shadow);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.oswp-admin-stat-box:hover {
+    box-shadow: var(--oswp-admin-shadow-hover);
+    transform: translateY(-1px);
+}
+
+.oswp-admin-stat-box:nth-child(2) {
+    border-left-color: var(--oswp-admin-success);
+}
+
+.oswp-admin-stat-box:nth-child(3) {
+    border-left-color: var(--oswp-admin-warning);
+}
+
+.oswp-admin-stat-box:nth-child(4) {
+    border-left-color: var(--oswp-admin-danger);
+}
+
+.oswp-admin-stat-box h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--oswp-admin-text);
+    line-height: 1.2;
+}
+
+.oswp-admin-stat-box p {
+    margin: 6px 0 0;
+    color: var(--oswp-admin-text-light);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.oswp-admin-quick-links,
+.oswp-admin-shortcodes {
+    background: var(--oswp-admin-white);
+    padding: 24px;
+    border: 1px solid var(--oswp-admin-border-light);
+    border-radius: var(--oswp-admin-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--oswp-admin-shadow);
+}
+
+.oswp-admin-quick-links h3,
+.oswp-admin-shortcodes h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--oswp-admin-bg);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--oswp-admin-text);
+}
+
+.oswp-admin-quick-links ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.oswp-admin-quick-links li {
+    margin-bottom: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--oswp-admin-bg);
+}
+
+.oswp-admin-quick-links li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.oswp-admin-quick-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--oswp-admin-primary);
+    transition: color 0.15s;
+}
+
+.oswp-admin-quick-links a:hover {
+    color: var(--oswp-admin-primary-hover);
+}
+
+/* ============================================
+   Page Assignment
+   ============================================ */
+#oswp_posts_pages th {
+    width: 250px;
+    padding: 20px 10px 20px 0;
+    font-weight: 600;
+}
+
+#oswp_posts_pages td {
+    padding: 15px 10px;
+}
+
+#oswp_posts_pages select {
+    min-width: 300px;
+    height: 36px;
+    border-radius: var(--oswp-admin-radius);
+    border: 1px solid var(--oswp-admin-border);
+    padding: 0 12px;
+}
+
+/* Dropdown icon for selects */
+#oswp_posts_pages select,
+.oswp-field-row select,
+.oswp-form__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b6b' d='M6 8.5L1 3.5h10z'/%3E%3C/svg%3E") no-repeat right 12px center;
+    background-size: 12px 12px;
+    padding-right: 32px;
+}
+
+/* ============================================
+   Field Manager Table
+   ============================================ */
+.oswp-field-manager {
+    overflow-x: auto;
+    margin: 15px 0;
+    border: 1px solid var(--oswp-admin-border-light);
+    border-radius: var(--oswp-admin-radius);
+    background: var(--oswp-admin-white);
+}
+
+.oswp-field-table {
+    min-width: 800px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.oswp-field-table th {
+    background: var(--oswp-admin-bg);
+    padding: 12px 14px;
+    border-bottom: 2px solid var(--oswp-admin-border-light);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--oswp-admin-text-light);
+    text-align: left;
+}
+
+.oswp-field-table td {
+    vertical-align: middle;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--oswp-admin-border-light);
+}
+
+.oswp-field-table tr:last-child td {
+    border-bottom: none;
+}
+
+.oswp-field-row--builtin {
+    background: #f9fafb;
+}
+
+.oswp-field-row--builtin td {
+    color: var(--oswp-admin-text-light);
+}
+
+.oswp-field-row:hover {
+    background: #f6f7f7;
+}
+
+.oswp-field-row input[type="text"],
+.oswp-field-row select {
+    border-radius: 4px;
+    border: 1px solid var(--oswp-admin-border);
+    padding: 4px 8px;
+    height: 32px;
+}
+
+.oswp-field-row .small-text {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+/* ============================================
+   Media Field in Admin
+   ============================================ */
+.oswp-media-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.oswp-media-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--oswp-admin-radius);
+    border: 1px solid var(--oswp-admin-border-light);
+    background-color: var(--oswp-admin-bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ============================================
+   Helper Classes
+   ============================================ */
+.oswp-w-100 { width: 100%; }
+.oswp-w-50 { width: 50%; }
+.oswp-w-33 { width: 33.33%; }
+.oswp-w-25 { width: 25%; }
+
+/* ============================================
+   Form Table Improvements
+   ============================================ */
+.form-table th {
+    font-weight: 600;
+    width: 200px;
+    vertical-align: top;
+    padding-top: 20px;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.form-table textarea.large-text {
+    border-radius: var(--oswp-admin-radius);
+    border: 1px solid var(--oswp-admin-border);
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.form-table input[type="text"],
+.form-table input[type="email"],
+.form-table input[type="number"],
+.form-table select {
+    border-radius: 4px;
+    border: 1px solid var(--oswp-admin-border);
+    padding: 4px 10px;
+    height: 36px;
+}
+
+/* ============================================
+   Shortcodes Table
+   ============================================ */
+.oswp-admin-shortcodes code {
+    background: #f6f7f7;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--oswp-admin-danger);
+    font-size: 12px;
+    border: 1px solid var(--oswp-admin-border-light);
+    display: inline-block;
+}
+
+/* ============================================
+   Email Template Styling
+   ============================================ */
+.oswp-posts-emails-subject {
+    margin-bottom: 10px !important;
+    width: 100%;
+    max-width: 500px;
+}
+
+.oswp-posts-emails-body {
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 160px;
+}
+
+/* ============================================
+   Nav Tabs (Admin Settings Tabs)
+   ============================================ */
+.nav-tab-wrapper {
+    border-bottom: 2px solid var(--oswp-admin-border-light);
+    margin-bottom: 24px;
+}
+
+.nav-tab-wrapper .nav-tab {
+    border-radius: var(--oswp-admin-radius) var(--oswp-admin-radius) 0 0;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.nav-tab-wrapper .nav-tab:hover {
+    background: var(--oswp-admin-bg);
+}
+
+.nav-tab-wrapper .nav-tab-active {
+    border-bottom-color: var(--oswp-admin-white);
+    font-weight: 600;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.oswp-admin-dashboard .button-primary,
+.wrap .button-primary {
+    border-radius: var(--oswp-admin-radius);
+    padding: 4px 16px;
+    height: 36px;
+    line-height: 28px;
+    font-weight: 600;
+    transition: background 0.15s;
+}
+
+/* ============================================
+   Section Headers
+   ============================================ */
+.wrap h2,
+.wrap h3 {
+    color: var(--oswp-admin-text);
+}
+
+.wrap .description {
+    color: var(--oswp-admin-text-light);
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* ============================================
+   Form Tabs (Frontend - kept for compatibility)
+   ============================================ */
+.oswp-form-tabs {
+    margin-bottom: 20px;
+}
+
+.oswp-form-tabs__nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.oswp-form-tabs__tab {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    transition: background-color 0.2s;
+}
+
+.oswp-form-tabs__tab:hover {
+    background: #e9e9e9;
+}
+
+.oswp-form-tabs__tab.oswp-form-tabs__tab--active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+.oswp-form-tabs__content {
+    display: none;
+}
+
+.oswp-form-tabs__content.oswp-form-tabs__content--active {
+    display: block;
+}

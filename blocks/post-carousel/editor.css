@@ -1,0 +1,152 @@
+/**
+ * OSWP Post Carousel — Editor Styles
+ *
+ * @package OSWP News Portal
+ */
+
+/* ── Editor wrapper ── */
+.oswp-post-carousel-editor {
+	padding: 1rem;
+	background: #f8fafc;
+	border: 2px dashed #cbd5e1;
+	border-radius: 8px;
+	min-height: 120px;
+	margin: 1rem 0;
+}
+
+.oswp-post-carousel-editor .components-placeholder {
+	min-height: 120px;
+}
+
+.oswp-post-carousel-editor .oswp-post-carousel-wrapper,
+.oswp-post-carousel-editor .oswp-hero-wrapper {
+	pointer-events: none;
+}
+
+.oswp-post-carousel-editor .slick-slider {
+	pointer-events: auto;
+}
+
+/* ── Layout Selector Grid ── */
+.oswp-layout-selector {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+}
+
+.oswp-layout-btn {
+	display: flex !important;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	padding: 12px 8px !important;
+	border: 2px solid #e2e8f0 !important;
+	border-radius: 8px !important;
+	background: #f8fafc !important;
+	cursor: pointer;
+	transition: all 0.15s;
+	min-height: 80px;
+	justify-content: center;
+}
+
+.oswp-layout-btn:hover {
+	border-color: #94a3b8 !important;
+	background: #f1f5f9 !important;
+}
+
+.oswp-layout-btn.is-active {
+	border-color: #2563eb !important;
+	background: #eff6ff !important;
+	color: #2563eb;
+}
+
+.oswp-layout-btn .dashicons,
+.oswp-layout-btn svg {
+	color: inherit;
+}
+
+.oswp-layout-btn__label {
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.oswp-layout-btn__desc {
+	font-size: 10px;
+	color: #94a3b8;
+	text-align: center;
+	line-height: 1.3;
+}
+
+.oswp-layout-btn.is-active .oswp-layout-btn__desc {
+	color: #60a5fa;
+}
+
+/* ── Spacing Control ── */
+.oswp-spacing-control__header {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 4px;
+}
+
+.oswp-spacing-control__inputs {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 6px;
+}
+
+.oswp-spacing-control__field .components-base-control__label {
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #94a3b8;
+	margin-bottom: 2px;
+}
+
+.oswp-spacing-control__field .components-input-control__container {
+	min-height: 32px;
+}
+
+/* ── Border Radius Control ── */
+.oswp-border-radius-control .oswp-spacing-control__inputs {
+	grid-template-columns: 1fr 1fr;
+}
+
+/* ── Editor preview specifics ── */
+.oswp-post-carousel-editor .oswp-editor-preview {
+	pointer-events: none;
+}
+
+.oswp-post-carousel-editor .oswp-card {
+	width: 100%;
+}
+
+.oswp-post-carousel-editor .oswp-carousel-slide {
+	margin: 0 !important;
+}
+
+/* Ticker in editor */
+.oswp-post-carousel-editor .oswp-ticker-wrapper {
+	pointer-events: none;
+}
+
+/* Scrollbar for editor preview */
+.oswp-post-carousel-editor .oswp-editor-preview::-webkit-scrollbar {
+	height: 6px;
+}
+
+.oswp-post-carousel-editor .oswp-editor-preview::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.08);
+	border-radius: 3px;
+}
+
+/* ── Responsive editor ── */
+@media (max-width: 1024px) {
+	.oswp-post-carousel-editor {
+		min-height: 200px;
+	}
+}
+
+@media (max-width: 768px) {
+	.oswp-post-carousel-editor {
+		min-height: 300px;
+	}
+}

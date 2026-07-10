@@ -1,0 +1,594 @@
+.oswp-admin-shell {
+  min-height: 100vh;
+  --color-text: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-bg: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.oswp-admin-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.oswp-admin-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 20px;
+  align-self: start;
+}
+
+.oswp-admin-sidebar-link {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 8px;
+  min-height: 36px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition, 150ms ease);
+}
+
+.oswp-admin-sidebar-link:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.oswp-admin-sidebar-link.active {
+  border-color: #6366f1;
+  background: #f5f3ff;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.oswp-admin-sidebar-link.active:hover {
+  background: #ede9fe;
+}
+
+.oswp-admin-content {
+  min-width: 0;
+}
+
+.oswp-admin-hero,
+.oswp-admin-panel-card,
+.oswp-admin-table-card,
+.oswp-admin-form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.oswp-admin-hero {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.oswp-admin-hero h1,
+.oswp-admin-section-head h1 {
+  font-size: 22px;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.oswp-admin-hero p,
+.oswp-admin-section-head p,
+.oswp-admin-panel-card p {
+  color: var(--color-text-secondary);
+}
+
+.oswp-admin-kicker {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.oswp-admin-hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.oswp-admin-stats-grid,
+.oswp-admin-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.oswp-admin-stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.oswp-admin-stat-card span {
+  display: block;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.oswp-admin-stat-card strong {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.oswp-admin-panel-card,
+.oswp-admin-form-card,
+.oswp-admin-table-card {
+  padding: 16px;
+}
+
+.oswp-admin-panel-card.clickable {
+  cursor: pointer;
+}
+
+.oswp-admin-panel-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.oswp-admin-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.oswp-admin-pill-live {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.oswp-admin-pill-neutral {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.oswp-admin-pill-accent {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.oswp-admin-pill-subtle {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.oswp-admin-pill-placeholder {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.oswp-admin-section-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.oswp-admin-table-card table {
+  width: 100%;
+}
+
+.oswp-admin-cell-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.oswp-admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px 12px;
+  margin: 12px 0;
+}
+
+.oswp-admin-form-card label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.oswp-admin-form-card label input,
+.oswp-admin-form-card label textarea {
+  margin-top: 6px;
+}
+
+.oswp-admin-textarea {
+  min-height: 120px;
+}
+
+.oswp-admin-form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.oswp-admin-checkbox {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px !important;
+}
+
+.oswp-admin-checkbox input {
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.oswp-admin-muted {
+  color: var(--color-text-muted);
+}
+
+.oswp-admin-panel-grid-wide {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.oswp-admin-builder-grid {
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+}
+
+.oswp-admin-builder-head,
+.oswp-admin-field-card__head,
+.oswp-admin-field-card__foot,
+.oswp-admin-inline-actions {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.oswp-admin-builder-head {
+  margin-bottom: 18px;
+}
+
+.oswp-admin-builder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oswp-admin-builder-list--accordion {
+  gap: 10px;
+}
+
+.oswp-admin-search {
+  min-width: 220px;
+}
+
+.oswp-admin-field-item {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.oswp-admin-field-item.is-open {
+  border-color: #6366f1;
+  background: #f8faff;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.1);
+}
+
+.oswp-admin-field-item__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.oswp-admin-field-item__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.oswp-admin-field-item__meta strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.oswp-admin-field-item__info {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.oswp-admin-field-item__info span:not(:last-child)::after {
+  content: '•';
+  margin-left: 12px;
+}
+
+.oswp-admin-field-item__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.oswp-admin-field-item__actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.oswp-btn-sm {
+  padding: 6px 10px;
+  font-size: 13px;
+  min-height: auto;
+  border-radius: 8px;
+}
+
+.oswp-admin-field-editor-inline {
+  padding: 10px 12px;
+  border-top: 1px solid var(--color-border);
+  background: #fff;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.oswp-admin-field-editor-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.oswp-admin-form-grid-full {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.oswp-admin-builder-card {
+  margin-bottom: 20px;
+}
+
+.oswp-admin-builder-section {
+  margin-bottom: 24px;
+}
+
+.oswp-admin-form-card h3 {
+  margin-bottom: 4px;
+}
+
+.oswp-admin-form-card small {
+  color: var(--color-text-muted);
+}
+
+.oswp-admin-textarea-sm {
+  min-height: 70px;
+}
+ 
+.oswp-admin-textarea-tall {
+  min-height: 250px;
+}
+
+.oswp-admin-toggle-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.oswp-admin-toggle-card {
+  display: flex !important;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.oswp-admin-toggle-card strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.oswp-admin-toggle-card small {
+  display: block;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.oswp-admin-toggle-card input {
+  margin-top: 4px;
+}
+
+.oswp-admin-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.oswp-admin-chip {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--color-surface);
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.oswp-admin-chip.active {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.oswp-admin-chip input {
+  margin: 0;
+}
+
+.oswp-admin-token-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.oswp-admin-token-list code {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.oswp-admin-keyword-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 520px;
+  overflow: auto;
+}
+
+.oswp-admin-keyword-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+.oswp-admin-keyword-row span {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.oswp-admin-empty {
+  border: 1px dashed var(--color-border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: var(--color-text-muted);
+  background: #fafafa;
+}
+
+.oswp-admin-form-grid__full {
+  grid-column: 1 / -1;
+}
+
+.oswp-admin-checkbox-inline {
+  margin-top: 28px;
+}
+
+@media (max-width: 960px) {
+  .oswp-admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .oswp-admin-sidebar {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .oswp-admin-sidebar-link {
+    min-width: 190px;
+  }
+
+  .oswp-admin-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .oswp-admin-builder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oswp-admin-field-item__header {
+    flex-direction: column;
+  }
+
+  .oswp-admin-field-item__actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+ 
+/* Form UI & Button overrides for admin shell */
+.oswp-admin-shell .oswp-input {
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--transition, 150ms ease), box-shadow var(--transition, 150ms ease);
+}
+ 
+.oswp-admin-shell .oswp-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+ 
+.oswp-admin-shell select.oswp-input,
+.oswp-admin-shell .oswp-input.oswp-select {
+  padding-right: 28px;
+  background-position: right 10px center;
+  background-size: 10px 10px;
+}
+ 
+.oswp-admin-shell .oswp-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+ 
+.oswp-admin-shell .oswp-btn-sm {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+}

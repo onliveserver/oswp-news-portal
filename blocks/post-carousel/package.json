@@ -1,0 +1,31 @@
+{
+  "name": "@oswp/post-carousel-block",
+  "version": "1.0.0",
+  "description": "Post Carousel Block for WordPress",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build index.js --output-path=build",
+    "start": "wp-scripts start index.js --output-path=build"
+  },
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "block",
+    "carousel",
+    "slider"
+  ],
+  "author": "Onlive Server Development Team",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.0.0"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^12.0.0",
+    "@wordpress/blocks": "^12.0.0",
+    "@wordpress/components": "^25.0.0",
+    "@wordpress/data": "^9.0.0",
+    "@wordpress/element": "^5.0.0",
+    "@wordpress/i18n": "^4.0.0",
+    "@wordpress/server-side-render": "^4.0.0"
+  }
+}

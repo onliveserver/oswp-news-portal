@@ -1,0 +1,3229 @@
+/* ============================================
+   OSWP Posts - Modern Frontend Styles
+   ============================================ */
+
+:root {
+  /* Color Palette */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #dbeafe;
+  --secondary-color: #64748b;
+  --secondary-hover: #475569;
+  --success-color: #10b981;
+  --success-light: #d1fae5;
+  --error-color: #ef4444;
+  --error-light: #fee2e2;
+  --warning-color: #f59e0b;
+  --warning-light: #fef3c7;
+  --info-color: #06b6d4;
+  --info-light: #cffafe;
+
+  /* Neutral Colors */
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  /* Spacing */
+  --spacing-xs: 0.125rem;
+  --spacing-sm: 0.25rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+  --spacing-2xl: 1.5rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.oswp-form,
+.oswp-notice,
+.oswp-dashboard,
+.oswp-stat-card,
+.oswp-post-item {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Dashboard Layout
+   ============================================ */
+
+.oswp-dashboard {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--gray-800);
+}
+
+.oswp-dashboard__container {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: var(--spacing-2xl);
+  align-items: flex-start;
+}
+
+/* ============================================
+   Sidebar Navigation
+   ============================================ */
+
+.oswp-dashboard__sidebar {
+  flex: 0 0 280px;
+  background: var(--white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: var(--spacing-lg);
+  border-radius: var(--radius-xl);
+}
+
+/* ============================================
+   User Info Section
+   ============================================ */
+
+.oswp-dashboard__user-info {
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.oswp-dashboard__user-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+}
+
+.oswp-dashboard__user-details {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.oswp-dashboard__user-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.oswp-dashboard__user-avatar-img {
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.oswp-dashboard__user-status {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oswp-dashboard__user-status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--success-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--white);
+}
+
+.oswp-dashboard__user-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.oswp-dashboard__user-name {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.oswp-dashboard__user-email {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  word-break: break-all;
+}
+
+.oswp-dashboard__user-role {
+  margin-top: var(--spacing-sm);
+}
+
+.oswp-dashboard__user-role-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(10px);
+}
+
+.oswp-dashboard__user-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+  position: relative;
+  z-index: 2;
+}
+
+.oswp-dashboard__user-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.oswp-dashboard__user-stat-number {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.oswp-dashboard__user-stat-label {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-medium);
+}
+
+.oswp-dashboard__menu {
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-lg);
+}
+
+.oswp-dashboard__menu-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  border: 1px solid transparent;
+}
+
+.oswp-dashboard__menu-item:hover {
+  background: var(--gray-50);
+  color: var(--primary-color);
+  transform: translateX(4px);
+  border-color: var(--primary-light);
+}
+
+.oswp-dashboard__menu-item--active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.oswp-dashboard__menu-item--active:hover {
+  transform: none;
+}
+
+.oswp-dashboard__menu-item--logout {
+  color: var(--error-color);
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--gray-200);
+  margin-bottom: 0;
+}
+
+.oswp-dashboard__menu-item--logout:hover {
+  background: var(--error-light);
+  color: var(--error-color);
+  transform: translateX(4px);
+  border-color: var(--error-light);
+}
+
+.oswp-dashboard__menu-icon {
+  margin-right: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  width: var(--font-size-lg);
+  height: var(--font-size-lg);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.oswp-dashboard__menu-text {
+  flex: 1;
+  font-weight: inherit;
+}
+
+.oswp-dashboard__menu-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  opacity: 0.8;
+}
+
+.oswp-dashboard__menu-divider {
+  height: 1px;
+  background: var(--gray-200);
+  margin: var(--spacing-lg) 0;
+  border-radius: 1px;
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+
+.oswp-dashboard__main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================
+   Dashboard Welcome Section
+   ============================================ */
+
+.oswp-dashboard__welcome {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--white);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.oswp-dashboard__welcome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(50px, -50px);
+}
+
+.oswp-dashboard__welcome::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: translate(-50px, 50px);
+}
+
+.oswp-dashboard__welcome-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.oswp-dashboard__welcome-title {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.oswp-dashboard__welcome-subtitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+.oswp-dashboard__welcome-actions {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  margin-left: var(--spacing-xl);
+}
+
+/* ============================================
+   Dashboard Sections
+   ============================================ */
+
+.oswp-dashboard__section {
+  background: var(--white);
+  padding: var(--spacing-2xl);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal);
+  position: relative;
+  border-radius: var(--radius-xl);
+}
+
+.oswp-dashboard__section:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.oswp-dashboard__section-title {
+  margin: 0 0 var(--spacing-xl) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.oswp-dashboard__section-title .dashicons {
+  color: var(--primary-color);
+  font-size: var(--font-size-xl);
+}
+
+/* ============================================
+   Stats Cards
+   ============================================ */
+
+.oswp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.oswp-stat-card {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.oswp-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.oswp-stat-card__icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  color: var(--white);
+}
+
+.oswp-stat-card--total .oswp-stat-card__icon {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+}
+
+.oswp-stat-card--monthly .oswp-stat-card__icon {
+  background: linear-gradient(135deg, var(--info-color) 0%, #06b6d4 100%);
+}
+
+.oswp-stat-card--published .oswp-stat-card__icon {
+  background: linear-gradient(135deg, var(--success-color) 0%, #10b981 100%);
+}
+
+.oswp-stat-card--drafts .oswp-stat-card__icon {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #f59e0b 100%);
+}
+
+.oswp-stat-card__content {
+  flex: 1;
+}
+
+.oswp-stat-card__number {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.oswp-stat-card__divider {
+  color: var(--gray-400);
+  font-weight: var(--font-weight-normal);
+}
+
+.oswp-stat-card__label {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-medium);
+}
+
+.oswp-stat-card__trend {
+  color: var(--success-color);
+  font-size: var(--font-size-lg);
+}
+
+.oswp-stat-card__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.oswp-stat-card__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--info-color) 0%, #06b6d4 100%);
+  border-radius: inherit;
+  transition: width var(--transition-normal);
+}
+
+/* ============================================
+   Action Cards
+   ============================================ */
+
+.oswp-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.oswp-action-card {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xl);
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  color: var(--gray-700);
+  transition: all var(--transition-normal);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.oswp-action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.oswp-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+}
+
+.oswp-action-card:hover::before {
+  opacity: 0.05;
+}
+
+.oswp-action-card__icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  color: var(--gray-600);
+  margin-right: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.oswp-action-card:hover .oswp-action-card__icon {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.oswp-action-card__content {
+  flex: 1;
+}
+
+.oswp-action-card__title {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: inherit;
+  transition: color var(--transition-normal);
+}
+
+.oswp-action-card__description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  line-height: 1.5;
+  transition: color var(--transition-normal);
+}
+
+.oswp-action-card:hover .oswp-action-card__description {
+  color: var(--gray-600);
+}
+
+.oswp-action-card__arrow {
+  flex-shrink: 0;
+  margin-left: var(--spacing-lg);
+  color: var(--gray-400);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-normal);
+}
+
+.oswp-action-card:hover .oswp-action-card__arrow {
+  color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+
+
+/* ============================================
+   Form Container Design
+   ============================================ */
+
+.oswp-form {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-2xl);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.oswp-form:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Authentication forms styling */
+.oswp-form--login,
+.oswp-form--register,
+.oswp-form--verification,
+.oswp-form--forgot-password,
+.oswp-form--reset-password {
+  max-width: 550px;
+}
+
+/* Dashboard forms - wider layout */
+.oswp-form--profile,
+.oswp-form--password {
+  max-width: 800px;
+  margin: 0 0 var(--spacing-xl) 0;
+  padding: var(--spacing-2xl);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Post form - fullwidth in dashboard */
+.oswp-form--post {
+  max-width: 100%;
+  margin: 0 0 var(--spacing-xl) 0;
+  padding: var(--spacing-2xl);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Form body wrapper */
+.oswp-form__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form wrapper utility */
+.oswp-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.oswp-form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .oswp-form__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.oswp-form__group {
+  margin-bottom: var(--spacing-md);
+}
+
+.oswp-form__group--100 {
+  grid-column: 1 / -1;
+}
+
+.oswp-form__group--50 {
+  grid-column: span 1;
+}
+
+@media (max-width: 639px) {
+  .oswp-form__group--50 {
+    grid-column: 1 / -1;
+  }
+}
+
+.oswp-form__label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.oswp-form__input,
+.oswp-form__textarea,
+.oswp-form__select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  color: var(--gray-800);
+}
+
+/* Dropdown icon for selects */
+.oswp-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8.2L1.2 3.4h9.6z'/%3E%3C/svg%3E") no-repeat right 12px center;
+  background-size: 12px 12px;
+  padding-right: 40px;
+}
+
+.oswp-form__input:focus,
+.oswp-form__textarea:focus,
+.oswp-form__select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: var(--white);
+}
+
+.oswp-form__input--error,
+.oswp-form__textarea--error {
+  border-color: var(--error-color);
+  background: var(--error-light);
+}
+
+.oswp-form__input--error:focus,
+.oswp-form__textarea--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.oswp-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  line-height: 1.5;
+}
+
+.oswp-form__error {
+  display: block;
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  padding-left: var(--spacing-md);
+  border-left: 3px solid var(--error-color);
+  animation: slideInDown 0.2s ease-out;
+}
+
+.oswp-form__help {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  font-style: italic;
+}
+
+/* Form Field Validation Indicators */
+.oswp-form__group {
+  position: relative;
+}
+
+.oswp-form__status-bar {
+  display: none;
+  height: 3px;
+  margin-top: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  background-color: #f0f0f0;
+  overflow: hidden;
+  position: relative;
+}
+
+.oswp-form__status-bar.oswp-form__status-bar--valid {
+  display: block;
+  background-color: var(--success-color);
+  animation: pulse 0.3s ease-out;
+}
+
+.oswp-form__status-bar.oswp-form__status-bar--invalid {
+  display: block;
+  background-color: var(--error-color);
+  animation: pulse 0.3s ease-out;
+}
+
+.oswp-form__status-bar.oswp-form__status-bar--warning {
+  display: block;
+  background-color: var(--warning-color);
+  animation: pulse 0.3s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.oswp-form__input--valid,
+.oswp-form__textarea--valid,
+.oswp-form__select--valid {
+  border-color: var(--success-color);
+  background-color: rgba(16, 185, 129, 0.02);
+}
+
+.oswp-form__input--valid:focus,
+.oswp-form__textarea--valid:focus,
+.oswp-form__select--valid:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.oswp-form__input--warning,
+.oswp-form__textarea--warning,
+.oswp-form__select--warning {
+  border-color: var(--warning-color);
+  background-color: rgba(245, 158, 11, 0.02);
+}
+
+.oswp-form__input--warning:focus,
+.oswp-form__textarea--warning:focus,
+.oswp-form__select--warning:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+/* Validation message styling */
+.oswp-form__hint {
+  display: block;
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.oswp-form__hint--valid {
+  color: #047857;
+  background-color: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid var(--success-color);
+}
+
+.oswp-form__hint--invalid {
+  color: var(--error-color);
+  background-color: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid var(--error-color);
+}
+
+.oswp-form__hint--warning {
+  color: #b45309;
+  background-color: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid var(--warning-color);
+}
+
+/* ============================================
+   Media Upload
+   ============================================ */
+
+.oswp-media-upload {
+  border: 2px dashed var(--gray-300);
+  padding: var(--spacing-md);
+  text-align: center;
+  border-radius: var(--radius-lg);
+  background: var(--gray-50);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.oswp-media-upload:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+}
+
+.oswp-media-upload__preview {
+  max-width: 120px;
+  margin: 0 auto var(--spacing-md) auto;
+}
+
+.oswp-media-upload__preview img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   Form Utilities
+   ============================================ */
+
+.oswp-form__submit {
+  margin-top: var(--spacing-lg);
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--white);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.oswp-form__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.oswp-form__submit:active {
+  transform: translateY(0);
+}
+
+.oswp-form__footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--gray-200);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.oswp-form__footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.oswp-form__footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.oswp-form__footer p {
+  margin: var(--spacing-xs) 0;
+}
+
+/* Form checkbox styling */
+.oswp-form__checkbox {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-md) 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.oswp-form__checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.oswp-form__checkbox-text {
+  font-size: var(--font-size-base);
+  color: var(--gray-700);
+}
+
+.oswp-form__label-inline {
+  font-size: var(--font-size-base);
+  color: var(--gray-700);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* ============================================
+   Notices & Alerts
+   ============================================ */
+
+.oswp-notice {
+  padding: var(--spacing-lg) var(--spacing-lg);
+  margin: 0 0 var(--spacing-xl) 0;
+  border-left: 5px solid;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  font-size: var(--font-size-base);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.oswp-notice::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: var(--spacing-md);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.oswp-notice p,
+.oswp-notice ul {
+  margin: var(--spacing-sm) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.oswp-notice p:first-child {
+  margin-top: 0;
+}
+
+.oswp-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.oswp-notice ul {
+  padding-left: var(--spacing-2xl);
+  list-style: disc;
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.oswp-notice li {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.5;
+}
+
+.oswp-notice--success {
+  background: linear-gradient(135deg, var(--success-light) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border-left-color: var(--success-color);
+  color: #065f46;
+}
+
+.oswp-notice--success::before {
+  content: '✓';
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--success-color);
+  display: inline-block;
+  margin: 0 var(--spacing-md) 0 0;
+  width: auto;
+  background: none;
+}
+
+.oswp-notice--error {
+  background: linear-gradient(135deg, var(--error-light) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border-left-color: var(--error-color);
+  color: #7f1d1d;
+  font-weight: 500;
+}
+
+.oswp-notice--error::before {
+  content: '⚠';
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--error-color);
+  display: inline-block;
+  margin: 0 var(--spacing-md) 0 0;
+  width: auto;
+  background: none;
+}
+
+.oswp-notice--warning {
+  background: linear-gradient(135deg, var(--warning-light) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border-left-color: var(--warning-color);
+  color: #78350f;
+}
+
+.oswp-notice--warning::before {
+  content: '⚡';
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--warning-color);
+  display: inline-block;
+  margin: 0 var(--spacing-md) 0 0;
+  width: auto;
+  background: none;
+}
+
+.oswp-notice--info {
+  background: linear-gradient(135deg, var(--info-light) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border-left-color: var(--info-color);
+  color: #164e63;
+}
+
+.oswp-notice--info::before {
+  content: 'ℹ';
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--info-color);
+  display: inline-block;
+  margin: 0 var(--spacing-md) 0 0;
+  width: auto;
+  background: none;
+}
+
+/* ============================================
+   Responsive Form Design
+   ============================================ */
+
+/* Enhanced Validation Notice */
+.oswp-validation-notice {
+  border-left: 6px solid var(--error-color) !important;
+  padding: var(--spacing-lg) var(--spacing-lg) !important;
+  background: linear-gradient(135deg, #fee2e2 0%, rgba(239, 68, 68, 0.03) 100%) !important;
+}
+
+.oswp-validation-notice__header {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: #7f1d1d;
+  margin: 0 0 var(--spacing-lg) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.oswp-validation-notice__header::before {
+  content: '⚠';
+  font-size: 22px;
+}
+
+.oswp-validation-group {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 4px solid var(--error-color);
+  border-radius: var(--radius-md);
+}
+
+.oswp-validation-group--seo {
+  border-left-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.04);
+}
+
+.oswp-validation-group--content {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.04);
+}
+
+.oswp-validation-group--media {
+  border-left-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.04);
+}
+
+.oswp-validation-group--tags {
+  border-left-color: #ec4899;
+  background: rgba(236, 72, 153, 0.04);
+}
+
+.oswp-validation-group--general {
+  border-left-color: #ef4444;
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.oswp-validation-group__title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.oswp-validation-group--seo .oswp-validation-group__title {
+  color: #0891b2;
+}
+
+.oswp-validation-group--content .oswp-validation-group__title {
+  color: #b45309;
+}
+
+.oswp-validation-group--media .oswp-validation-group__title {
+  color: #6d28d9;
+}
+
+.oswp-validation-group--tags .oswp-validation-group__title {
+  color: #be185d;
+}
+
+.oswp-validation-group__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.oswp-validation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.oswp-validation-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background-color: var(--error-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.oswp-validation-group--seo .oswp-validation-item__icon {
+  background-color: #06b6d4;
+}
+
+.oswp-validation-group--content .oswp-validation-item__icon {
+  background-color: #f59e0b;
+}
+
+.oswp-validation-group--media .oswp-validation-item__icon {
+  background-color: #8b5cf6;
+}
+
+.oswp-validation-group--tags .oswp-validation-item__icon {
+  background-color: #ec4899;
+}
+
+.oswp-validation-item__text {
+  flex: 1;
+  color: #334155;
+}
+
+@media (max-width: 768px) {
+  .oswp-form {
+    max-width: 100%;
+    margin: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-xl);
+  }
+
+  .oswp-form--login,
+  .oswp-form--register,
+  .oswp-form--verification,
+  .oswp-form--forgot-password,
+  .oswp-form--reset-password {
+    max-width: 100%;
+    margin: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .oswp-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oswp-form__footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+  }
+
+  .oswp-form-tabs__nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .oswp-form {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .oswp-form__submit {
+    padding: var(--spacing-md) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .oswp-form__group {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .oswp-form__label {
+    font-size: var(--font-size-xs);
+  }
+
+  .oswp-form__input,
+  .oswp-form__textarea,
+  .oswp-form__select {
+    padding: var(--spacing-sm);
+    font-size: 16px; /* Prevents zoom on focus */
+  }
+
+  .oswp-verification-code {
+    gap: var(--spacing-sm) !important;
+  }
+
+  .oswp-code-input {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 20px !important;
+  }
+}
+
+/* ============================================
+   Form Tab Styles
+   ============================================ */
+
+.oswp-form-tabs {
+  width: 100%;
+}
+
+.oswp-form-tabs__nav {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--gray-200);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-md);
+}
+
+.oswp-form-tabs__tab {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-600);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  font-size: var(--font-size-sm);
+}
+
+.oswp-form-tabs__tab:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-light);
+}
+
+.oswp-form-tabs__tab--active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.oswp-form-tabs__content {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.oswp-form-tabs__content--active {
+  display: block;
+}
+
+/* ============================================
+   Posts Section
+   ============================================ */
+
+.oswp-dashboard__section--posts {
+  padding: var(--spacing-2xl);
+}
+
+.oswp-posts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.oswp-posts-header__title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.oswp-posts-count {
+  background: var(--gray-100);
+  color: var(--gray-600);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   Posts Filters
+   ============================================ */
+
+.oswp-posts-filters {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .oswp-posts-filters {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.oswp-posts-filter-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.oswp-posts-filter-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gray-50);
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.oswp-posts-filter-tab:hover {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border-color: var(--gray-300);
+}
+
+.oswp-posts-filter-tab--active {
+  background: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.oswp-posts-filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  min-width: 20px;
+  text-align: center;
+}
+
+.oswp-posts-filter-tab--active .oswp-posts-filter-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.oswp-posts-search {
+  flex: 1;
+  max-width: 400px;
+}
+
+.oswp-posts-search-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.oswp-posts-search-input {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-fast);
+}
+
+.oswp-posts-search-input:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: var(--white);
+}
+
+.oswp-posts-search-input .dashicons {
+  color: var(--gray-400);
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+}
+
+.oswp-posts-search-input input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  font-size: var(--font-size-base);
+  color: var(--gray-700);
+  outline: none;
+}
+
+.oswp-posts-search-input input::placeholder {
+  color: var(--gray-400);
+}
+
+.oswp-posts-search-clear {
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oswp-posts-search-clear:hover {
+  color: var(--error-color);
+  background: var(--error-light);
+}
+
+/* ============================================
+   Posts Grid
+   ============================================ */
+
+.oswp-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================
+   Post Cards
+   ============================================ */
+
+.oswp-post-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.oswp-post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--primary-light);
+}
+
+.oswp-post-card__header {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.oswp-post-card__thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.oswp-post-card__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.oswp-post-card:hover .oswp-post-card__thumbnail {
+  transform: scale(1.05);
+}
+
+.oswp-post-card__thumbnail--placeholder {
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  font-size: 3rem;
+}
+
+.oswp-post-card__status {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+}
+
+.oswp-post-card__status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.oswp-post-card__status-badge--publish {
+  background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+  color: var(--white);
+}
+
+.oswp-post-card__status-badge--pending {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%);
+  color: var(--white);
+}
+
+.oswp-post-card__status-badge--draft {
+  background: linear-gradient(135deg, var(--gray-400) 0%, var(--gray-500) 100%);
+  color: var(--white);
+}
+
+.oswp-post-card__content {
+  padding: var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.oswp-post-card__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  color: var(--gray-900);
+}
+
+.oswp-post-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.oswp-post-card__title a:hover {
+  color: var(--primary-color);
+}
+
+.oswp-post-card__excerpt {
+  color: var(--gray-600);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.oswp-post-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  margin-top: var(--spacing-sm);
+}
+
+.oswp-post-card__date,
+.oswp-post-card__views {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.oswp-post-card__date .dashicons,
+.oswp-post-card__views .dashicons {
+  font-size: var(--font-size-sm);
+  color: var(--gray-400);
+}
+
+.oswp-post-card__actions {
+  padding: var(--spacing-lg);
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--gray-100);
+}
+
+.oswp-post-card__actions-primary {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.oswp-post-card__actions-secondary {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.oswp-post-card__action-link {
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oswp-post-card__action-link:hover {
+  color: var(--error-color);
+  background: var(--error-light);
+}
+
+.oswp-post-card__action-link--delete:hover {
+  color: var(--error-color);
+  background: var(--error-light);
+}
+
+.oswp-post-card__approved-notice {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--success-color);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   Posts Pagination
+   ============================================ */
+
+.oswp-posts-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.oswp-posts-pagination .oswp-pagination-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin: 0 var(--spacing-xs);
+  background: var(--white);
+  color: var(--gray-600);
+  text-decoration: none;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.oswp-posts-pagination .oswp-pagination-link:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-300);
+  color: var(--gray-700);
+}
+
+.oswp-posts-pagination .oswp-pagination-link--active {
+  background: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.oswp-posts-pagination .oswp-pagination-prev,
+.oswp-posts-pagination .oswp-pagination-next {
+  font-weight: var(--font-weight-semibold);
+}
+
+.oswp-posts-pagination .oswp-pagination-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  margin: 0 var(--spacing-xs);
+  background: transparent;
+  color: var(--gray-400);
+  border: none;
+  font-size: var(--font-size-sm);
+  cursor: default;
+}
+
+/* ============================================
+   Post Item - Well Structured Design
+   ============================================ */
+
+.oswp-post-item {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  padding: 0;
+  transition: all var(--transition-normal);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.oswp-post-item:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+
+/* Post Item Header - Thumbnail and Main Content */
+.oswp-post-item__header {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-100);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+}
+
+.oswp-post-item__thumbnail {
+  flex-shrink: 0;
+  width: 100px;
+  height: 75px;
+  overflow: hidden;
+  border: 2px solid var(--white);
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.oswp-post-item__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.oswp-post-item:hover .oswp-post-item__thumbnail img {
+  transform: scale(1.05);
+}
+
+.oswp-post-item__thumbnail--placeholder {
+  background: linear-gradient(135deg, var(--gray-200) 0%, var(--gray-300) 100%);
+  color: var(--gray-500);
+}
+
+.oswp-post-item__thumbnail--placeholder .dashicons {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+}
+
+/* Post Item Content */
+.oswp-post-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.oswp-post-item__title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.oswp-post-item__title:hover {
+  color: var(--primary-color);
+}
+
+.oswp-post-item__status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.oswp-post-item__status--publish {
+  background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+  color: var(--white);
+}
+
+.oswp-post-item__status--pending {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%);
+  color: var(--white);
+}
+
+.oswp-post-item__status--draft {
+  background: linear-gradient(135deg, var(--gray-400) 0%, var(--gray-500) 100%);
+  color: var(--white);
+}
+
+.oswp-post-item__status--future {
+  background: linear-gradient(135deg, var(--info-color) 0%, #0284c7 100%);
+  color: var(--white);
+}
+
+.oswp-post-item__status--trash {
+  background: linear-gradient(135deg, var(--error-color) 0%, #dc2626 100%);
+  color: var(--white);
+}
+
+/* Post Item Meta */
+.oswp-post-item__meta {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.oswp-post-item__meta::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--gray-400);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Post Item Actions */
+.oswp-post-item__actions {
+  padding: var(--spacing-lg);
+  padding-top: 0;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.oswp-post-item__actions-left {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.oswp-post-item__actions-right {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.oswp-post-item__approved-notice {
+  color: var(--success-color);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.oswp-post-item__approved-notice::before {
+  content: '✓';
+  font-size: var(--font-size-base);
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .oswp-dashboard__sidebar {
+    flex: 0 0 100%;
+    order: 2;
+    margin-top: var(--spacing-lg);
+  }
+
+  .oswp-dashboard__user-info {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-post-item__header {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .oswp-post-item__thumbnail {
+    width: 80px;
+    height: 60px;
+  }
+
+  .oswp-post-item__thumbnail--placeholder .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .oswp-post-item__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .oswp-posts-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .oswp-posts-filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .oswp-posts-search {
+    max-width: none;
+  }
+
+  .oswp-posts-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .oswp-post-card__header {
+    height: 140px;
+  }
+
+  .oswp-post-card__content {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-post-card__actions {
+    padding: var(--spacing-md);
+    padding-top: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .oswp-post-card__actions-primary,
+  .oswp-post-card__actions-secondary {
+    justify-content: center;
+  }
+
+  .oswp-posts-pagination .oswp-pagination-link {
+    min-width: 36px;
+    height: 36px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin: 0 var(--spacing-xs);
+    font-size: var(--font-size-xs);
+  }
+}
+
+.oswp-post-item__approved-notice {
+  color: var(--color-success);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.oswp-dashboard__section,
+.oswp-dashboard__header,
+.oswp-stat-card,
+.oswp-post-item,
+.oswp-form,
+.oswp-notice {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.oswp-dashboard__section:nth-child(1) { animation-delay: 0.1s; }
+.oswp-dashboard__section:nth-child(2) { animation-delay: 0.2s; }
+.oswp-dashboard__section:nth-child(3) { animation-delay: 0.3s; }
+.oswp-stat-card:nth-child(1) { animation-delay: 0.1s; }
+.oswp-stat-card:nth-child(2) { animation-delay: 0.2s; }
+.oswp-stat-card:nth-child(3) { animation-delay: 0.3s; }
+.oswp-stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.oswp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+}
+
+.oswp-table th,
+.oswp-table td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.oswp-table th {
+  background: var(--gray-50);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.oswp-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.oswp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.oswp-text-center { text-align: center; }
+.oswp-text-right { text-align: right; }
+.oswp-text-left { text-align: left; }
+
+.oswp-mb-0 { margin-bottom: 0 !important; }
+.oswp-mb-1 { margin-bottom: var(--spacing-md) !important; }
+.oswp-mb-2 { margin-bottom: var(--spacing-xl) !important; }
+
+.oswp-mt-1 { margin-top: var(--spacing-md) !important; }
+.oswp-mt-2 { margin-top: var(--spacing-xl) !important; }
+
+.oswp-hidden { display: none !important; }
+
+.oswp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+
+.oswp-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.oswp-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 2px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: oswp-spin 0.8s linear infinite;
+}
+
+@keyframes oswp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Empty States
+   ============================================ */
+
+.oswp-empty-state {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  color: var(--gray-500);
+}
+
+.oswp-empty-state__icon {
+  font-size: 4rem;
+  color: var(--gray-300);
+  margin-bottom: var(--spacing-md);
+}
+
+.oswp-empty-state__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-700);
+}
+
+.oswp-empty-state__text {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================
+   WordPress Compatibility
+   ============================================ */
+
+.admin-bar .oswp-dashboard {
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .oswp-dashboard {
+    margin-top: 46px;
+  }
+}
+
+/* WordPress Editor */
+.oswp-form .wp-editor-container {
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.oswp-form .wp-editor-container .mce-tinymce {
+  border: none;
+  box-shadow: none;
+}
+
+/* Select Dropdowns */
+.oswp-form select {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 16px;
+  padding-right: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .oswp-dashboard__container {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .oswp-dashboard__sidebar {
+    flex: 0 0 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .oswp-dashboard__container {
+    flex-direction: column;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .oswp-dashboard__sidebar {
+    flex: none;
+    order: 2;
+  }
+
+  .oswp-dashboard__menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .oswp-dashboard__menu-item {
+    flex: 1;
+    min-width: 120px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    border-bottom: none;
+    border-right: 1px solid var(--gray-200);
+    justify-content: center;
+  }
+
+  .oswp-dashboard__menu-item:last-child {
+    border-right: none;
+  }
+
+  .oswp-dashboard__menu-item--logout {
+    border-top: 1px solid var(--gray-200);
+    margin-top: var(--spacing-sm);
+    width: 100%;
+    border-right: none;
+  }
+
+  .oswp-dashboard__menu-icon {
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-base);
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+  }
+
+  .oswp-dashboard__main {
+    order: 1;
+  }
+
+  .oswp-dashboard__header {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .oswp-dashboard__header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .oswp-dashboard__section {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .oswp-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .oswp-stat-card {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-stat-card__number {
+    font-size: var(--font-size-3xl);
+  }
+
+  .oswp-actions {
+    flex-direction: column;
+  }
+
+  .oswp-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .oswp-form {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .oswp-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oswp-table {
+    font-size: var(--font-size-sm);
+  }
+
+  .oswp-table th,
+  .oswp-table td {
+    padding: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .oswp-dashboard__container {
+    padding: var(--spacing-sm);
+  }
+
+  .oswp-dashboard__header {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-dashboard__header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .oswp-dashboard__section {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-stat-card {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-stat-card__number {
+    font-size: var(--font-size-2xl);
+  }
+
+  .oswp-form {
+    padding: var(--spacing-md);
+  }
+
+  .oswp-form__input,
+  .oswp-form__textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .oswp-post-item__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .oswp-post-item__status {
+    margin-top: var(--spacing-xs);
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .oswp-dashboard__sidebar,
+  .button,
+  .oswp-actions {
+    display: none !important;
+  }
+
+  .oswp-dashboard {
+  }
+
+  .oswp-dashboard__section,
+  .oswp-stat-card,
+  .oswp-post-item {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* ============================================
+   Focus States & Accessibility
+   ============================================ */
+
+.oswp-form__input:focus,
+.oswp-form__textarea:focus,
+.oswp-form__select:focus,
+.button:focus,
+.oswp-dashboard__menu-item:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .oswp-stat-card {
+    background: var(--gray-900);
+    color: var(--white);
+  }
+
+  .oswp-notice {
+    border-left-width: 6px;
+  }
+}
+
+/* ============================================
+   Password Toggle
+   ============================================ */
+
+.oswp-input-container {
+  position: relative;
+}
+
+.oswp-password-toggle {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  color: var(--gray-500);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oswp-password-toggle:hover {
+  color: var(--gray-700);
+  background: var(--gray-100);
+}
+
+.oswp-password-toggle .dashicons {
+  font-size: var(--font-size-base);
+  width: var(--font-size-base);
+  height: var(--font-size-base);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.oswp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.oswp-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-normal);
+}
+
+.oswp-btn:hover::before {
+  left: 100%;
+}
+
+.oswp-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.oswp-btn--primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  color: var(--white);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
+}
+
+.oswp-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+  border-color: var(--primary-hover);
+}
+
+.oswp-btn--secondary {
+  background: var(--white);
+  color: var(--gray-700);
+  border-color: var(--gray-300);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.oswp-btn--secondary:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+  color: var(--gray-900);
+  transform: translateY(-1px);
+}
+
+.oswp-btn--lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.oswp-btn--sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.oswp-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.oswp-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   Notice/Flash Messages
+   ============================================ */
+
+.oswp-notice {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  /* switch from flex to block so each <p> becomes its own notification line */
+  display: block;
+}
+
+/* ensure each paragraph stacks vertically and is clearly separated */
+.oswp-notice p {
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.oswp-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.oswp-notice p {
+  margin: 0;
+  padding: 0;
+}
+
+.oswp-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.oswp-notice--success {
+  background-color: var(--success-light);
+  border-left-color: var(--success-color);
+  color: var(--gray-800);
+}
+
+.oswp-notice--error {
+  background-color: var(--error-light);
+  border-left-color: var(--error-color);
+  color: var(--gray-800);
+}
+
+.oswp-notice--warning {
+  background-color: var(--warning-light);
+  border-left-color: var(--warning-color);
+  color: var(--gray-800);
+}
+
+.oswp-notice--info {
+  background-color: var(--info-light);
+  border-left-color: var(--info-color);
+  color: var(--gray-800);
+}
+
+/* ============================================
+   Password Toggle Button
+   ============================================ */
+
+.oswp-input-container {
+  position: relative;
+}
+
+.oswp-password-toggle {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: var(--spacing-xs);
+  cursor: pointer;
+  color: var(--gray-400);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.oswp-password-toggle:hover {
+  color: var(--primary-color);
+  background: var(--primary-light);
+}
+
+.oswp-password-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.oswp-password-toggle .dashicons {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Adjust input padding to make room for the toggle button */
+.oswp-input-container .oswp-form__input[type="password"],
+.oswp-input-container .oswp-form__input[type="text"] {
+  padding-right: 40px;
+}
+
+/* ============================================
+   OTP Verification Code Inputs
+   ============================================ */
+
+.oswp-verification-code {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.oswp-code-input {
+  width: 48px !important;
+  height: 48px !important;
+  text-align: center !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  border: 2px solid var(--gray-300) !important;
+  border-radius: 8px !important;
+  background: var(--white) !important;
+  color: var(--gray-900) !important;
+  transition: all var(--transition-fast) !important;
+  box-shadow: none !important;
+}
+
+.oswp-code-input:focus {
+  outline: none !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  background: var(--white) !important;
+}
+
+.oswp-code-input:invalid {
+  border-color: var(--error-color) !important;
+  background: var(--error-light) !important;
+}
+
+.oswp-form__description {
+  color: var(--gray-600);
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ============================================
+   Form Tabs
+   ============================================ */
+.oswp-form-tabs {
+  margin-bottom: var(--spacing-xl);
+}
+
+.oswp-form-tabs__nav {
+  display: flex;
+  border-bottom: 1px solid var(--gray-300);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.oswp-form-tabs__tab {
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-bottom: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.oswp-form-tabs__tab:hover {
+  background: var(--gray-200);
+  color: var(--gray-900);
+}
+
+.oswp-form-tabs__tab.oswp-form-tabs__tab--active {
+  background: var(--white);
+  border-bottom: 1px solid var(--white);
+  margin-bottom: -1px;
+  color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.oswp-form-tabs__content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.oswp-form-tabs__content.oswp-form-tabs__content--active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Post Form - Description Box
+   ============================================ */
+
+.oswp-post-form__description {
+  background: var(--info-light);
+  border: 1px solid #a5f3fc;
+  border-left: 4px solid var(--info-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: var(--gray-700);
+}
+
+.oswp-post-form__description p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.oswp-post-form__description p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Post Form - Required Asterisk
+   ============================================ */
+
+.oswp-form__required {
+  color: var(--error-color);
+  font-weight: var(--font-weight-bold);
+  margin-left: 2px;
+}
+
+/* ============================================
+   Post Form - Field Hints
+   ============================================ */
+
+.oswp-form__hint {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--gray-400);
+  margin-top: var(--spacing-sm);
+  font-style: italic;
+}
+
+/* ============================================
+   Post Form - Media Upload Dropzone
+   ============================================ */
+
+.oswp-media-upload__dropzone {
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  text-align: center;
+  background: var(--gray-50);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oswp-media-upload__dropzone:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+}
+
+.oswp-media-upload__placeholder {
+  color: var(--gray-400);
+}
+
+.oswp-media-upload__placeholder .dashicons {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto var(--spacing-md);
+  color: var(--gray-300);
+}
+
+.oswp-media-upload__placeholder p {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-500);
+}
+
+.oswp-media-upload__hint {
+  font-size: var(--font-size-xs);
+  color: var(--gray-400);
+}
+
+.oswp-media-upload__preview {
+  max-width: 100%;
+}
+
+.oswp-media-upload__preview img {
+  max-width: 100%;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.oswp-media-upload__preview:not(:empty) ~ .oswp-media-upload__placeholder {
+  display: none;
+}
+
+.oswp-media-upload__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.oswp-media-upload__btn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.oswp-media-upload__btn:hover {
+  background: var(--gray-50);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.oswp-media-upload__remove {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--error-color);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  color: var(--error-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: none;
+}
+
+.oswp-media-upload__remove:hover {
+  background: var(--error-light);
+}
+
+.oswp-media-upload__remove.is-visible {
+  display: inline-block;
+}
+
+/* ============================================
+   Post Form - Word Count
+   ============================================ */
+
+.oswp-form__word-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-sm);
+}
+
+.oswp-word-count__text {
+  font-weight: var(--font-weight-medium);
+}
+
+.oswp-word-count__range {
+  color: var(--gray-400);
+}
+
+.oswp-form__word-count.is-valid .oswp-word-count__text {
+  color: var(--success-color);
+}
+
+.oswp-form__word-count.is-invalid .oswp-word-count__text {
+  color: var(--error-color);
+}
+
+/* ============================================
+   Post Form - Field Row
+   ============================================ */
+
+.oswp-form__field-row {
+  margin-bottom: var(--spacing-xl);
+}
+
+.oswp-form__fields-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+}
+
+.oswp-form__fields-wrapper .oswp-form__field-row {
+  flex: 1 1 100%;
+}
+
+.oswp-form__fields-wrapper .oswp-form__field-row[style*="width: 50%"] {
+  flex: 0 0 calc(50% - var(--spacing-lg));
+}
+
+/* ============================================
+   Post Form - SEO Fields Section
+   ============================================ */
+
+.oswp-form__field-row .oswp-form__hint[data-seo] {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* ============================================
+   Direct File Upload - Non-Admin Users
+   ============================================ */
+
+.oswp-form__file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.oswp-form__file-input {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: var(--font-size-sm);
+}
+
+.oswp-form__file-input:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+}
+
+.oswp-form__file-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.oswp-form__file-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+}
+
+.oswp-form__file-preview img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-300);
+}
+
+.oswp-form__file-preview p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+}
+
+/* ============================================
+   Reduced motion support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   Responsive - Post Form
+   ============================================ */
+@media (max-width: 768px) {
+  .oswp-form__fields-wrapper .oswp-form__field-row[style*="width: 50%"] {
+    flex: 0 0 100%;
+  }
+
+  .oswp-media-upload__dropzone {
+    min-height: 140px;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .oswp-media-upload__actions {
+    flex-direction: column;
+  }
+}

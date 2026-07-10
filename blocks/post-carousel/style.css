@@ -1,0 +1,887 @@
+/**
+ * OSWP Post Carousel — Frontend Styles
+ * Layouts: card · overlay · ticker · hero
+ *
+ * All dynamic values are driven by CSS custom properties
+ * set inline via PHP (--oswp-*).
+ *
+ * @package OSWP News Portal
+ */
+
+/* ============================================
+   0. CSS Custom-Property Fallbacks
+   ============================================ */
+.oswp-post-carousel-wrapper,
+.oswp-ticker-wrapper,
+.oswp-hero-wrapper {
+	--oswp-dot-color: #2563eb;
+	--oswp-dot-size: 12px;
+	--oswp-arrow-color: #1e293b;
+	--oswp-arrow-bg: #ffffff;
+	--oswp-arrow-size: 40px;
+	--oswp-overlay-color: #000000;
+	--oswp-overlay-opacity: 0.5;
+	--oswp-border-width: 1px;
+	--oswp-border-color: #e2e8f0;
+	--oswp-border-style: solid;
+	--oswp-radius-tl: 12px;
+	--oswp-radius-tr: 12px;
+	--oswp-radius-bl: 12px;
+	--oswp-radius-br: 12px;
+	--oswp-pad-top: 20px;
+	--oswp-pad-right: 20px;
+	--oswp-pad-bottom: 20px;
+	--oswp-pad-left: 20px;
+	--oswp-margin-top: 0px;
+	--oswp-margin-right: 0px;
+	--oswp-margin-bottom: 0px;
+	--oswp-margin-left: 0px;
+	--oswp-col-gap: 10px;
+	--oswp-slider-height: auto;
+	--oswp-img-height: auto;
+	--oswp-title-size: 20px;
+	--oswp-title-color: #1e293b;
+	--oswp-excerpt-size: 14px;
+	--oswp-excerpt-color: #64748b;
+	--oswp-meta-size: 12px;
+	--oswp-meta-color: #94a3b8;
+	--oswp-bg-color: #ffffff;
+	--oswp-btn-color: #ffffff;
+	--oswp-btn-bg: #2563eb;
+	--oswp-btn-radius: 4px;
+	--oswp-btn-size: 14px;
+	--oswp-cat-bg: #2563eb;
+	--oswp-cat-color: #ffffff;
+	--oswp-slides-to-show: 3;
+}
+
+/* ============================================
+   1. COMMON / BASE
+   ============================================ */
+.oswp-post-carousel-wrapper {
+	position: relative;
+	width: 100%;
+    border: none;
+}
+
+.oswp-carousel-slide {
+	padding: 0 calc(var(--oswp-col-gap) / 2);
+	box-sizing: border-box;
+	height: 100%;
+}
+
+/* Slick reset */
+.oswp-post-carousel-wrapper .slick-list {
+	margin: 0 calc(var(--oswp-col-gap) / -2);
+}
+
+.oswp-post-carousel-wrapper .slick-track {
+	display: flex;
+	align-items: stretch;
+}
+
+.oswp-post-carousel-wrapper .slick-slide {
+	height: auto;
+	display: flex;
+}
+
+.oswp-post-carousel-wrapper .slick-slide > div {
+	height: 100%;
+	width: 100%;
+}
+
+/* ============================================
+   2. CARD LAYOUT
+   ============================================ */
+.oswp-card {
+	background: var(--oswp-bg-color);
+	border: var(--oswp-border-width) var(--oswp-border-style) var(--oswp-border-color);
+	border-radius: var(--oswp-radius-tl) var(--oswp-radius-tr) var(--oswp-radius-br) var(--oswp-radius-bl);
+	overflow: hidden;
+	transition: all 0.3s ease;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: var(--oswp-margin-top) var(--oswp-margin-right) var(--oswp-margin-bottom) var(--oswp-margin-left);
+}
+
+.oswp-card--hover:hover {
+	transform: translateY(-5px);
+}
+
+/* ── Shadows ── */
+.oswp-shadow--none   { box-shadow: none; }
+.oswp-shadow--small  { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
+.oswp-shadow--medium { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+.oswp-shadow--large  { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.oswp-shadow--xlarge { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+
+.oswp-card--hover:hover.oswp-shadow--small  { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+.oswp-card--hover:hover.oswp-shadow--medium { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+.oswp-card--hover:hover.oswp-shadow--large  { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+.oswp-card--hover:hover.oswp-shadow--xlarge { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+/* ── Card Image ── */
+.oswp-card__image {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.oswp-card__image a {
+	display: block;
+	overflow: hidden;
+}
+
+.oswp-card__img {
+	width: 100%;
+	height: var(--oswp-img-height);
+	display: block;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+	aspect-ratio: 16 / 9;
+}
+
+.oswp-card:hover .oswp-card__img {
+	transform: scale(1.05);
+}
+
+/* ── Category Badge (shared) ── */
+.oswp-card__badge,
+.oswp-overlay__badge {
+	position: absolute;
+	bottom: 12px;
+	left: 12px;
+	z-index: 2;
+}
+
+.oswp-card__badge a,
+.oswp-overlay__badge a {
+	display: inline-block;
+	padding: 4px 12px;
+	background: var(--oswp-cat-bg);
+	color: var(--oswp-cat-color);
+	text-decoration: none;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-radius: 3px;
+	transition: opacity 0.2s;
+}
+
+.oswp-card__badge a:hover,
+.oswp-overlay__badge a:hover {
+	opacity: 0.85;
+	color: var(--oswp-cat-color);
+}
+
+/* ── Card Body ── */
+.oswp-card__body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: var(--oswp-pad-top) var(--oswp-pad-right) var(--oswp-pad-bottom) var(--oswp-pad-left);
+}
+
+/* ── Card Title ── */
+.oswp-card__title {
+	margin: 0 0 0.75rem;
+	line-height: 1.3;
+	font-weight: 600;
+	font-size: var(--oswp-title-size);
+	color: var(--oswp-title-color);
+}
+
+.oswp-card__title a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.oswp-card__title a:hover {
+	color: var(--oswp-btn-bg);
+}
+
+/* ── Card Meta ── */
+.oswp-card__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-bottom: 0.75rem;
+	align-items: center;
+	font-size: var(--oswp-meta-size);
+	color: var(--oswp-meta-color);
+}
+
+.oswp-card__author,
+.oswp-card__date {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.oswp-card__meta svg {
+	opacity: 0.7;
+}
+
+/* ── Card Excerpt ── */
+.oswp-card__excerpt {
+	margin-bottom: 1rem;
+	line-height: 1.6;
+	flex: 1;
+	font-size: var(--oswp-excerpt-size);
+	color: var(--oswp-excerpt-color);
+}
+
+/* ── Shared Button ── */
+.oswp-card__btn,
+.oswp-overlay__btn,
+.oswp-hero__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 20px;
+	background: var(--oswp-btn-bg);
+	color: var(--oswp-btn-color);
+	text-decoration: none;
+	font-weight: 500;
+	font-size: var(--oswp-btn-size);
+	border-radius: var(--oswp-btn-radius);
+	transition: all 0.2s;
+	align-self: flex-start;
+	margin-top: auto;
+	border: none;
+	cursor: pointer;
+}
+
+.oswp-card__btn:hover,
+.oswp-overlay__btn:hover,
+.oswp-hero__btn:hover {
+	filter: brightness(1.1);
+	color: var(--oswp-btn-color);
+	transform: translateX(3px);
+}
+
+/* ============================================
+   3. OVERLAY LAYOUT
+   ============================================ */
+.oswp-overlay {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--oswp-radius-tl) var(--oswp-radius-tr) var(--oswp-radius-br) var(--oswp-radius-bl);
+	height: var(--oswp-slider-height);
+	margin: var(--oswp-margin-top) var(--oswp-margin-right) var(--oswp-margin-bottom) var(--oswp-margin-left);
+	transition: transform 0.3s ease;
+}
+
+.oswp-overlay[class*="oswp-card--hover"]:hover {
+	transform: translateY(-3px);
+}
+
+.oswp-overlay__image {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 350px;
+}
+
+.oswp-overlay__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	min-height: 350px;
+	transition: transform 0.4s ease;
+}
+
+.oswp-overlay:hover .oswp-overlay__img {
+	transform: scale(1.03);
+}
+
+/* gradient / flat overlay */
+.oswp-overlay__gradient {
+	position: absolute;
+	inset: 0;
+	background: var(--oswp-overlay-color);
+	opacity: var(--oswp-overlay-opacity);
+	transition: opacity 0.3s;
+}
+
+.oswp-overlay__gradient.oswp-overlay--gradient {
+	background: linear-gradient(
+		to top,
+		var(--oswp-overlay-color) 0%,
+		rgba(0, 0, 0, 0.4) 40%,
+		transparent 100%
+	);
+	opacity: 1;
+}
+
+.oswp-overlay__content {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: var(--oswp-pad-top) var(--oswp-pad-right) var(--oswp-pad-bottom) var(--oswp-pad-left);
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.oswp-overlay__badge {
+	position: static;
+}
+
+.oswp-overlay__title {
+	margin: 0;
+	font-size: var(--oswp-title-size);
+	font-weight: 700;
+	line-height: 1.2;
+	color: #ffffff;
+}
+
+.oswp-overlay__title a {
+	color: #ffffff;
+	text-decoration: none;
+	transition: opacity 0.2s;
+}
+
+.oswp-overlay__title a:hover {
+	opacity: 0.85;
+}
+
+.oswp-overlay__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	font-size: var(--oswp-meta-size);
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.oswp-overlay__excerpt {
+	font-size: var(--oswp-excerpt-size);
+	color: rgba(255, 255, 255, 0.85);
+	line-height: 1.5;
+}
+
+.oswp-overlay__btn {
+	align-self: flex-start;
+	margin-top: 8px;
+}
+
+/* ============================================
+   4. TICKER LAYOUT
+   ============================================ */
+.oswp-ticker-wrapper {
+	display: flex;
+	align-items: center;
+	border: 1px solid #e2e8f0;
+	border-radius: 4px;
+	overflow: hidden;
+	height: 48px;
+	font-family: inherit;
+}
+
+.oswp-ticker__label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 20px;
+	font-weight: 700;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+	height: 100%;
+	flex-shrink: 0;
+}
+
+.oswp-ticker__pulse {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: currentColor;
+	animation: oswp-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes oswp-pulse {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(0.8);
+	}
+}
+
+.oswp-ticker__items {
+	flex: 1;
+	overflow: hidden;
+	height: 100%;
+}
+
+.oswp-ticker__items .slick-list,
+.oswp-ticker__items .slick-track {
+	height: 100%;
+}
+
+.oswp-ticker__items .slick-slide {
+	height: 100%;
+}
+
+.oswp-ticker__items .slick-slide > div {
+	height: 100%;
+}
+
+.oswp-ticker__item {
+	display: flex !important;
+	align-items: center;
+	height: 100%;
+	padding: 0 16px;
+}
+
+.oswp-ticker__item a {
+	color: inherit;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	transition: color 0.2s;
+}
+
+.oswp-ticker__item a:hover {
+	color: var(--oswp-btn-bg, #2563eb);
+}
+
+.oswp-ticker__nav {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	padding: 0 12px;
+	flex-shrink: 0;
+	height: 100%;
+}
+
+.oswp-ticker__prev,
+.oswp-ticker__next {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	background: transparent;
+	border: 1px solid #e2e8f0;
+	border-radius: 3px;
+	cursor: pointer;
+	color: #64748b;
+	transition: all 0.2s;
+	padding: 0;
+}
+
+.oswp-ticker__prev:hover,
+.oswp-ticker__next:hover {
+	background: #f1f5f9;
+	color: #1e293b;
+}
+
+/* ============================================
+   5. HERO LAYOUT
+   ============================================ */
+.oswp-hero-wrapper {
+	position: relative;
+	background: var(--oswp-bg-color);
+	border: var(--oswp-border-width) var(--oswp-border-style) var(--oswp-border-color);
+	border-radius: var(--oswp-radius-tl) var(--oswp-radius-tr) var(--oswp-radius-br) var(--oswp-radius-bl);
+	overflow: hidden;
+}
+
+.oswp-hero__slider .slick-list,
+.oswp-hero__slider .slick-track {
+	height: 100%;
+}
+
+.oswp-hero__slide {
+	display: flex !important;
+	min-height: 450px;
+	height: var(--oswp-slider-height);
+}
+
+.oswp-hero--reversed .oswp-hero__slide {
+	flex-direction: row-reverse;
+}
+
+.oswp-hero__text {
+	flex: 0 0 40%;
+	padding: var(--oswp-pad-top) var(--oswp-pad-right) var(--oswp-pad-bottom) var(--oswp-pad-left);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 16px;
+}
+
+.oswp-hero__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 800;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.oswp-hero__badge-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	animation: oswp-pulse 1.5s ease-in-out infinite;
+}
+
+.oswp-hero__title {
+	margin: 0;
+	font-size: clamp(24px, 3vw, 42px);
+	font-weight: 800;
+	line-height: 1.15;
+	color: var(--oswp-title-color);
+}
+
+.oswp-hero__title a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.oswp-hero__title a:hover {
+	color: var(--oswp-btn-bg);
+}
+
+.oswp-hero__excerpt {
+	font-size: var(--oswp-excerpt-size);
+	color: var(--oswp-excerpt-color);
+	line-height: 1.6;
+}
+
+.oswp-hero__time {
+	font-size: var(--oswp-meta-size);
+	color: var(--oswp-meta-color);
+}
+
+.oswp-hero__image {
+	flex: 0 0 60%;
+	position: relative;
+	overflow: hidden;
+}
+
+.oswp-hero__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.4s;
+}
+
+.oswp-hero__slide:hover .oswp-hero__img {
+	transform: scale(1.02);
+}
+
+.oswp-hero__cat-badge {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	padding: 4px 12px;
+	background: var(--oswp-cat-bg);
+	color: var(--oswp-cat-color);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+
+.oswp-hero__counter {
+	position: absolute;
+	bottom: 16px;
+	right: 80px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--oswp-meta-color);
+	background: rgba(255, 255, 255, 0.9);
+	padding: 4px 12px;
+	border-radius: 4px;
+	z-index: 5;
+}
+
+.oswp-hero__btn {
+	align-self: flex-start;
+}
+
+/* ============================================
+   6. ARROWS  (all styles)
+   ============================================ */
+.oswp-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	width: var(--oswp-arrow-size);
+	height: var(--oswp-arrow-size);
+	background: var(--oswp-arrow-bg);
+	color: var(--oswp-arrow-color);
+	border: 2px solid var(--oswp-border-color);
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.oswp-arrow svg {
+	width: calc(var(--oswp-arrow-size) * 0.45);
+	height: calc(var(--oswp-arrow-size) * 0.45);
+}
+
+.oswp-arrow:hover {
+	background: var(--oswp-btn-bg);
+	color: var(--oswp-btn-color);
+	border-color: var(--oswp-btn-bg);
+}
+
+/* positions */
+.oswp-arrow.slick-prev { left: -12px; }
+.oswp-arrow.slick-next { right: -12px; }
+
+/* Default */
+.oswp-arrow--default { border-radius: 8px; }
+
+/* Circle */
+.oswp-arrow--circle { border-radius: 50%; }
+
+/* Square */
+.oswp-arrow--square { border-radius: 4px; }
+
+/* Minimal */
+.oswp-arrow--minimal {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+.oswp-arrow--minimal:hover {
+	background: transparent;
+	color: var(--oswp-btn-bg);
+	border: none;
+}
+
+/* ============================================
+   7. DOTS  (all styles)
+   ============================================ */
+.oswp-post-carousel-wrapper .slick-dots,
+.oswp-hero-wrapper .slick-dots {
+	display: flex !important;
+	justify-content: center;
+	gap: 6px;
+	list-style: none;
+	padding: 0;
+	margin: 1.5rem 0 0;
+}
+
+.oswp-post-carousel-wrapper .slick-dots li,
+.oswp-hero-wrapper .slick-dots li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Default (circles) */
+.oswp-post-carousel-wrapper .slick-dots button,
+.oswp-hero-wrapper .slick-dots button {
+	font-size: 0;
+	width: var(--oswp-dot-size);
+	height: var(--oswp-dot-size);
+	padding: 0;
+	border: 2px solid #cbd5e1;
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.oswp-post-carousel-wrapper .slick-dots .slick-active button,
+.oswp-hero-wrapper .slick-dots .slick-active button {
+	background: var(--oswp-dot-color);
+	border-color: var(--oswp-dot-color);
+}
+
+.oswp-post-carousel-wrapper .slick-dots button:hover,
+.oswp-hero-wrapper .slick-dots button:hover {
+	border-color: var(--oswp-dot-color);
+}
+
+/* Inside position */
+.oswp-dots--inside .slick-dots {
+	position: absolute;
+	bottom: 16px;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
+}
+
+/* Line dots */
+.oswp-dots--line .slick-dots button {
+	width: calc(var(--oswp-dot-size) * 2);
+	height: 4px;
+	border-radius: 2px;
+	border: none;
+	background: #cbd5e1;
+}
+.oswp-dots--line .slick-dots .slick-active button {
+	width: calc(var(--oswp-dot-size) * 3);
+	background: var(--oswp-dot-color);
+}
+
+/* Dash dots */
+.oswp-dots--dash .slick-dots button {
+	width: var(--oswp-dot-size);
+	height: 3px;
+	border-radius: 1px;
+	border: none;
+	background: #cbd5e1;
+}
+.oswp-dots--dash .slick-dots .slick-active button {
+	background: var(--oswp-dot-color);
+}
+
+/* ============================================
+   8. RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+	.oswp-arrow.slick-prev { left: -8px; }
+	.oswp-arrow.slick-next { right: -8px; }
+
+	.oswp-hero__text  { flex: 0 0 45%; }
+	.oswp-hero__image { flex: 0 0 55%; }
+}
+
+@media (max-width: 768px) {
+	.oswp-hero__slide {
+		flex-direction: column !important;
+		min-height: auto;
+	}
+	.oswp-hero__text,
+	.oswp-hero__image {
+		flex: none;
+		width: 100%;
+	}
+	.oswp-hero__image {
+		min-height: 250px;
+	}
+	.oswp-hero__title {
+		font-size: 24px;
+	}
+
+	.oswp-overlay__image { min-height: 280px; }
+	.oswp-overlay__img   { min-height: 280px; }
+
+	.oswp-arrow {
+		width: 32px !important;
+		height: 32px !important;
+	}
+	.oswp-arrow svg {
+		width: 16px !important;
+		height: 16px !important;
+	}
+	.oswp-arrow.slick-prev { left: 4px; }
+	.oswp-arrow.slick-next { right: 4px; }
+}
+
+@media (max-width: 640px) {
+	.oswp-card__btn,
+	.oswp-overlay__btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.oswp-ticker__label {
+		padding: 0 12px;
+		font-size: 11px;
+	}
+
+	.oswp-hero__counter {
+		right: 60px;
+	}
+}
+
+/* ============================================
+   9. EDITOR PREVIEW  (SSR fallback)
+   ============================================ */
+.oswp-editor-preview {
+	display: flex;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	padding: 10px 0;
+    border: none;
+}
+
+.oswp-editor-preview .oswp-carousel-slide {
+	flex: 0 0 calc(100% / var(--oswp-slides-to-show, 3));
+	box-sizing: border-box;
+}
+
+/* Hero preview — just show first slide */
+.oswp-editor-preview.oswp-hero-wrapper .oswp-hero__slider {
+	display: block;
+}
+.oswp-editor-preview.oswp-hero-wrapper .oswp-hero__slide ~ .oswp-hero__slide {
+	display: none !important;
+}
+
+/* Ticker preview — show first item only */
+.oswp-ticker-wrapper .oswp-ticker__items:not(.slick-initialized) .oswp-ticker__item:not(:first-child) {
+	display: none;
+}
+
+/* No posts */
+.oswp-no-posts {
+	text-align: center;
+	padding: 40px 20px;
+	color: #94a3b8;
+	font-style: italic;
+}
+
+/* ============================================
+   10. PRINT
+   ============================================ */
+@media print {
+	.oswp-post-carousel-wrapper,
+	.oswp-ticker-wrapper,
+	.oswp-hero-wrapper {
+		display: none;
+	}
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+	.oswp-card,
+	.oswp-overlay,
+	.oswp-card__img,
+	.oswp-overlay__img,
+	.oswp-hero__img,
+	.oswp-card__btn,
+	.oswp-overlay__btn,
+	.oswp-hero__btn,
+	.oswp-arrow,
+	.oswp-ticker__pulse,
+	.oswp-hero__badge-dot {
+		transition: none !important;
+		animation: none !important;
+	}
+}

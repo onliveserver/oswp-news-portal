@@ -1,0 +1,113 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "oswp/post-carousel",
+  "title": "Post Carousel Slider",
+  "category": "oswp-news-portal",
+  "icon": "slides",
+  "description": "Display posts in beautiful carousel sliders with multiple layouts — card, overlay, ticker, hero — and fully customizable settings.",
+  "keywords": ["posts", "carousel", "slider", "news", "ticker", "hero", "overlay", "breaking"],
+  "textdomain": "oswp-posts",
+  "attributes": {
+    "layout":            { "type": "string",  "default": "card" },
+
+    "postsToShow":       { "type": "number",  "default": 6 },
+    "categories":        { "type": "array",   "default": [] },
+    "tags":              { "type": "array",   "default": [] },
+    "orderBy":           { "type": "string",  "default": "date" },
+    "order":             { "type": "string",  "default": "desc" },
+
+    "slidesToShow":      { "type": "number",  "default": 3 },
+    "slidesToScroll":    { "type": "number",  "default": 1 },
+    "autoplay":          { "type": "boolean", "default": true },
+    "autoplaySpeed":     { "type": "number",  "default": 3000 },
+    "pauseOnHover":      { "type": "boolean", "default": true },
+    "infinite":          { "type": "boolean", "default": true },
+    "speed":             { "type": "number",  "default": 500 },
+    "fade":              { "type": "boolean", "default": false },
+
+    "dots":              { "type": "boolean", "default": true },
+    "dotsStyle":         { "type": "string",  "default": "default" },
+    "dotsColor":         { "type": "string",  "default": "#2563eb" },
+    "dotsSize":          { "type": "number",  "default": 12 },
+    "dotsPosition":      { "type": "string",  "default": "outside" },
+
+    "arrows":            { "type": "boolean", "default": true },
+    "arrowStyle":        { "type": "string",  "default": "default" },
+    "arrowColor":        { "type": "string",  "default": "#1e293b" },
+    "arrowBgColor":      { "type": "string",  "default": "#ffffff" },
+    "arrowSize":         { "type": "number",  "default": 40 },
+
+    "showImage":         { "type": "boolean", "default": true },
+    "showTitle":         { "type": "boolean", "default": true },
+    "showExcerpt":       { "type": "boolean", "default": true },
+    "excerptLimit":      { "type": "number",  "default": 20 },
+    "showReadMore":      { "type": "boolean", "default": true },
+    "readMoreText":      { "type": "string",  "default": "Read More" },
+    "showDate":          { "type": "boolean", "default": true },
+    "showAuthor":        { "type": "boolean", "default": true },
+    "showCategory":      { "type": "boolean", "default": true },
+
+    "overlayColor":      { "type": "string",  "default": "#000000" },
+    "overlayOpacity":    { "type": "number",  "default": 50 },
+    "overlayGradient":   { "type": "boolean", "default": true },
+
+    "tickerLabel":       { "type": "string",  "default": "Breaking News" },
+    "tickerLabelBg":     { "type": "string",  "default": "#2563eb" },
+    "tickerLabelColor":  { "type": "string",  "default": "#ffffff" },
+    "tickerSpeed":       { "type": "number",  "default": 4000 },
+    "tickerBgColor":     { "type": "string",  "default": "#f8fafc" },
+    "tickerTextColor":   { "type": "string",  "default": "#1e293b" },
+
+    "heroLayout":        { "type": "string",  "default": "text-left" },
+    "showLiveBadge":     { "type": "boolean", "default": true },
+    "liveBadgeText":     { "type": "string",  "default": "LIVE" },
+    "liveBadgeColor":    { "type": "string",  "default": "#dc2626" },
+    "showTimeAgo":       { "type": "boolean", "default": true },
+    "showImageCounter":  { "type": "boolean", "default": true },
+
+    "sliderHeight":      { "type": "number",  "default": 0 },
+    "imageHeight":       { "type": "number",  "default": 0 },
+    "columnGap":         { "type": "number",  "default": 10 },
+
+    "paddingTop":        { "type": "number",  "default": 20 },
+    "paddingRight":      { "type": "number",  "default": 20 },
+    "paddingBottom":     { "type": "number",  "default": 20 },
+    "paddingLeft":       { "type": "number",  "default": 20 },
+    "marginTop":         { "type": "number",  "default": 0 },
+    "marginRight":       { "type": "number",  "default": 0 },
+    "marginBottom":      { "type": "number",  "default": 0 },
+    "marginLeft":        { "type": "number",  "default": 0 },
+
+    "borderWidth":       { "type": "number",  "default": 1 },
+    "borderColor":       { "type": "string",  "default": "#e2e8f0" },
+    "borderStyle":       { "type": "string",  "default": "solid" },
+    "borderRadiusTL":    { "type": "number",  "default": 12 },
+    "borderRadiusTR":    { "type": "number",  "default": 12 },
+    "borderRadiusBL":    { "type": "number",  "default": 12 },
+    "borderRadiusBR":    { "type": "number",  "default": 12 },
+
+    "titleFontSize":     { "type": "number",  "default": 20 },
+    "titleColor":        { "type": "string",  "default": "#1e293b" },
+    "excerptFontSize":   { "type": "number",  "default": 14 },
+    "excerptColor":      { "type": "string",  "default": "#64748b" },
+    "metaFontSize":      { "type": "number",  "default": 12 },
+    "metaColor":         { "type": "string",  "default": "#94a3b8" },
+    "backgroundColor":   { "type": "string",  "default": "#ffffff" },
+
+    "hoverEffect":       { "type": "boolean", "default": true },
+    "cardShadow":        { "type": "string",  "default": "medium" },
+
+    "buttonColor":       { "type": "string",  "default": "#ffffff" },
+    "buttonBgColor":     { "type": "string",  "default": "#2563eb" },
+    "buttonBorderRadius":{ "type": "number",  "default": 4 },
+    "buttonFontSize":    { "type": "number",  "default": 14 },
+
+    "categoryBgColor":   { "type": "string",  "default": "#2563eb" },
+    "categoryColor":     { "type": "string",  "default": "#ffffff" }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  }
+}
