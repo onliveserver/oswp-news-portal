@@ -97,6 +97,12 @@ class Update_Hooks {
 			return $source;
 		}
 
+		// Exclude portal folder by deleting it recursively from temporary folder
+		$portal_dir = trailingslashit( $source ) . 'portal';
+		if ( is_dir( $portal_dir ) ) {
+			$this->recursive_rmdir( $portal_dir );
+		}
+
 		$correct_dir = 'oswp-news-portal';
 		$source_dir  = basename( $source );
 
@@ -111,6 +117,28 @@ class Update_Hooks {
 		}
 
 		return $source;
+	}
+
+	/**
+	 * Recursively delete a directory and its contents.
+	 *
+	 * @param string $dir Path to directory.
+	 */
+	protected function recursive_rmdir( $dir ) {
+		if ( is_dir( $dir ) ) {
+			$objects = scandir( $dir );
+			foreach ( $objects as $object ) {
+				if ( '.' !== $object && '..' !== $object ) {
+					$path = $dir . DIRECTORY_SEPARATOR . $object;
+					if ( is_dir( $path ) && ! is_link( $path ) ) {
+						$this->recursive_rmdir( $path );
+					} else {
+						unlink( $path );
+					}
+				}
+			}
+			rmdir( $dir );
+		}
 	}
 
 	/**
