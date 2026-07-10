@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin bootstrap class.
  */
 class Plugin {
-	const VERSION = '1.2.0';
+	const VERSION = OSWP_POSTS_VERSION;
 
 	/**
 	 * Option key.

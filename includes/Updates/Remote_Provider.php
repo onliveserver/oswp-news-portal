@@ -175,11 +175,11 @@ class Remote_Provider {
 
 			$code = wp_remote_retrieve_response_code( $response );
 			if ( 200 !== (int) $code ) {
-				error_log( 'OSWP Update - HTTP error ' . $code . ', falling back to test mock 1.2.0' );
+				error_log( 'OSWP Update - HTTP error ' . $code . ', falling back to test mock ' . \OSWP\Posts\Plugin::VERSION );
 				return (object) [
 					'id'            => $this->plugin_slug,
 					'name'          => 'OSWP News Portal',
-					'version'       => '1.2.0',
+					'version'       => \OSWP\Posts\Plugin::VERSION,
 					'package'       => site_url( '/wp-content/uploads/oswp-news-portal.zip' ),
 					'url'           => 'https://github.com/onliveserver/oswp-news-portal',
 					'author'        => 'Onlive Server Development Team',

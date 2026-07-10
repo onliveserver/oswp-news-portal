@@ -30,11 +30,12 @@ class Updater_Bootstrap {
 			add_filter( 'pre_http_request', function( $preempt, $parsed_args, $url ) {
 				// Mock the GitHub Releases latest tag endpoint
 				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/releases/latest' ) !== false ) {
+					$version = \OSWP\Posts\Plugin::VERSION;
 					$body = json_encode([
-						'tag_name'    => 'v1.2.0',
-						'zipball_url' => 'https://api.github.com/repos/onliveserver/oswp-news-portal/zipball/v1.2.0',
-						'html_url'    => 'https://github.com/onliveserver/oswp-news-portal/releases/tag/v1.2.0',
-						'body'        => 'Testing GitHub Releases auto-updater.',
+						'tag_name'    => 'v' . $version,
+						'zipball_url' => 'https://api.github.com/repos/onliveserver/oswp-news-portal/zipball/v' . $version,
+						'html_url'    => 'https://github.com/onliveserver/oswp-news-portal/releases/tag/v' . $version,
+						'body'        => 'Testing GitHub Releases auto-updater with version ' . $version . '.',
 					]);
 					return [
 						'headers'  => [ 'content-type' => 'application/json' ],
@@ -46,7 +47,8 @@ class Updater_Bootstrap {
 				}
 
 				// Mock the download of the zipball package
-				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/zipball/v1.2.0' ) !== false ) {
+				$zip_url_part = 'api.github.com/repos/onliveserver/oswp-news-portal/zipball/v' . \OSWP\Posts\Plugin::VERSION;
+				if ( strpos( $url, $zip_url_part ) !== false ) {
 					$zip_path = WP_CONTENT_DIR . '/uploads/oswp-news-portal.zip';
 					if ( file_exists( $zip_path ) ) {
 						if ( ! empty( $parsed_args['filename'] ) ) {
