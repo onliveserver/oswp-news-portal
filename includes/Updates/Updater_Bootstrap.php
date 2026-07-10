@@ -26,15 +26,40 @@ class Updater_Bootstrap {
 			// Register error handler
 			Update_Error_Handler::register();
 
-			// Define the remote API endpoint (wp-host)
-			$api_endpoint = defined( 'OSWP_UPDATE_URL' ) 
-				? OSWP_UPDATE_URL 
-				: 'http://localhost/wp-host/';
+			// Intercept GitHub Release requests for local offline testing
+			add_filter( 'pre_http_request', function( $preempt, $parsed_args, $url ) {
+				// Mock the GitHub Releases latest tag endpoint
+				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/releases/latest' ) !== false ) {
+					$body = json_encode([
+						'tag_name'    => 'v1.2.0',
+						'zipball_url' => 'https://api.github.com/repos/onliveserver/oswp-news-portal/zipball/v1.2.0',
+						'html_url'    => 'https://github.com/onliveserver/oswp-news-portal/releases/tag/v1.2.0',
+						'body'        => 'Testing GitHub Releases auto-updater.',
+					]);
+					return [
+						'headers'  => [ 'content-type' => 'application/json' ],
+						'body'     => $body,
+						'response' => [ 'code' => 200, 'message' => 'OK' ],
+						'cookies'  => [],
+						'filename' => null,
+					];
+				}
 
-			// Validate endpoint URL
-			if ( empty( $api_endpoint ) ) {
-				return;
-			}
+				// Mock the download of the zipball package
+				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/zipball/v1.2.0' ) !== false ) {
+					$zip_path = WP_CONTENT_DIR . '/uploads/oswp-news-portal.zip';
+					if ( file_exists( $zip_path ) ) {
+						return [
+							'headers'  => [ 'content-type' => 'application/zip' ],
+							'body'     => file_get_contents( $zip_path ),
+							'response' => [ 'code' => 200, 'message' => 'OK' ],
+							'cookies'  => [],
+							'filename' => null,
+						];
+					}
+				}
+				return $preempt;
+			}, 10, 3 );
 
 			// Create remote provider
 			$remote_provider = new Remote_Provider( 

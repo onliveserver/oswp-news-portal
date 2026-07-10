@@ -89,7 +89,7 @@ class Updater_Settings {
 	public function add_settings_fields( $fields ) {
 		$fields[] = [
 			'id'       => 'oswp_update_server_url',
-			'title'    => __( 'Update Server URL', 'oswp-news-portal' ),
+			'title'    => __( 'GitHub Repository', 'oswp-news-portal' ),
 			'callback' => [ $this, 'render_update_server_field' ],
 			'section'  => 'oswp_updater_section',
 		];
@@ -124,12 +124,10 @@ class Updater_Settings {
 	 * Render update server URL field.
 	 */
 	public function render_update_server_field() {
-		$update_url = defined( 'OSWP_UPDATE_URL' ) 
-			? OSWP_UPDATE_URL 
-			: 'http://localhost/wp-host/';
+		$repo_url = 'https://github.com/onliveserver/oswp-news-portal';
 
-		echo '<input type="text" class="regular-text" readonly value="' . esc_attr( $update_url ) . '" />';
-		echo '<p class="description">' . esc_html__( 'Define OSWP_UPDATE_URL in wp-config.php to change this.', 'oswp-news-portal' ) . '</p>';
+		echo '<input type="text" class="regular-text" readonly value="' . esc_attr( $repo_url ) . '" />';
+		echo '<p class="description">' . esc_html__( 'Plugin updates are queried directly from this GitHub repository.', 'oswp-news-portal' ) . '</p>';
 	}
 
 	/**
