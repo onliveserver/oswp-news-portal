@@ -49,12 +49,15 @@ class Updater_Bootstrap {
 				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/zipball/v1.2.0' ) !== false ) {
 					$zip_path = WP_CONTENT_DIR . '/uploads/oswp-news-portal.zip';
 					if ( file_exists( $zip_path ) ) {
+						if ( ! empty( $parsed_args['filename'] ) ) {
+							copy( $zip_path, $parsed_args['filename'] );
+						}
 						return [
 							'headers'  => [ 'content-type' => 'application/zip' ],
-							'body'     => file_get_contents( $zip_path ),
+							'body'     => empty( $parsed_args['filename'] ) ? file_get_contents( $zip_path ) : null,
 							'response' => [ 'code' => 200, 'message' => 'OK' ],
 							'cookies'  => [],
-							'filename' => null,
+							'filename' => ! empty( $parsed_args['filename'] ) ? $parsed_args['filename'] : null,
 						];
 					}
 				}
