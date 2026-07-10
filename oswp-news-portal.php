@@ -2,7 +2,7 @@
 /**
  * Plugin Name: OSWP News Portal
  * Description: Frontend news portal with registration, login, dashboard, and post submission features with email verification.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Onlive Server Development Team
  * Text Domain: oswp-news-portal
  * Domain Path: /languages
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'OSWP_POSTS_PLUGIN_FILE', __FILE__ );
 
-define( 'OSWP_POSTS_VERSION', '1.2.0' );
+define( 'OSWP_POSTS_VERSION', '1.2.1' );
 
 define( 'OSWP_POSTS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
