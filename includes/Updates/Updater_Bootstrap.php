@@ -31,6 +31,18 @@ class Updater_Bootstrap {
 				// Mock the GitHub Releases latest tag endpoint
 				if ( strpos( $url, 'api.github.com/repos/onliveserver/oswp-news-portal/releases/latest' ) !== false ) {
 					$version = \OSWP\Posts\Plugin::VERSION;
+					$zip_path = WP_CONTENT_DIR . '/uploads/oswp-news-portal.zip';
+					if ( file_exists( $zip_path ) && class_exists( 'ZipArchive' ) ) {
+						$zip = new \ZipArchive();
+						if ( $zip->open( $zip_path ) === true ) {
+							$content = $zip->getFromName( 'oswp-news-portal/oswp-news-portal.php' );
+							if ( $content && preg_match( '/Version:\s*([0-9.]+)/i', $content, $matches ) ) {
+								$version = $matches[1];
+							}
+							$zip->close();
+						}
+					}
+
 					$body = json_encode([
 						'tag_name'    => 'v' . $version,
 						'zipball_url' => 'https://api.github.com/repos/onliveserver/oswp-news-portal/zipball/v' . $version,
@@ -47,8 +59,7 @@ class Updater_Bootstrap {
 				}
 
 				// Mock the download of the zipball package
-				$zip_url_part = 'api.github.com/repos/onliveserver/oswp-news-portal/zipball/v' . \OSWP\Posts\Plugin::VERSION;
-				if ( strpos( $url, $zip_url_part ) !== false ) {
+				if ( preg_match( '#api\.github\.com/repos/onliveserver/oswp-news-portal/zipball/v[0-9.]+#i', $url ) ) {
 					$zip_path = WP_CONTENT_DIR . '/uploads/oswp-news-portal.zip';
 					if ( file_exists( $zip_path ) ) {
 						if ( ! empty( $parsed_args['filename'] ) ) {

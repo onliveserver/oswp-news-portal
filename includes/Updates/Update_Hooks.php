@@ -78,6 +78,18 @@ class Update_Hooks {
 
 		// Clear update cache
 		wp_clean_plugins_cache();
+
+		// Automatic cleanup of temporary offline update files and transients
+		delete_transient( 'oswp_plugin_update_data_oswp-news-portal' );
+		delete_site_transient( 'update_plugins' );
+
+		$upload_dir = wp_upload_dir();
+		if ( empty( $upload_dir['error'] ) ) {
+			$zip_path = trailingslashit( $upload_dir['basedir'] ) . 'oswp-news-portal.zip';
+			if ( file_exists( $zip_path ) ) {
+				unlink( $zip_path );
+			}
+		}
 	}
 
 	/**
