@@ -174,7 +174,7 @@ class Remote_Provider {
 					'id'            => $this->plugin_slug,
 					'name'          => 'OSWP News Portal',
 					'version'       => '1.2.0',
-					'package'       => 'https://github.com/onliveserver/oswp-news-portal/archive/refs/heads/main.zip',
+					'package'       => site_url( '/wp-content/uploads/oswp-news-portal.zip' ),
 					'url'           => 'https://github.com/onliveserver/oswp-news-portal',
 					'author'        => 'Onlive Server Development Team',
 					'description'   => 'Test update package.',
