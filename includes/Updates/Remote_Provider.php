@@ -188,6 +188,14 @@ class Remote_Provider {
 					'tested'        => '6.5',
 					'requires'      => '6.0',
 					'requires_php'  => '7.4',
+					'icons'         => [
+						'svg'     => plugins_url( 'assets/images/icon.svg', OSWP_POSTS_PLUGIN_FILE ),
+						'default' => plugins_url( 'assets/images/icon.svg', OSWP_POSTS_PLUGIN_FILE ),
+					],
+					'banners'       => [
+						'low'  => plugins_url( 'assets/images/banner.png', OSWP_POSTS_PLUGIN_FILE ),
+						'high' => plugins_url( 'assets/images/banner.png', OSWP_POSTS_PLUGIN_FILE ),
+					],
 					'sections'      => [
 						'description' => 'Frontend news portal with registration, login, dashboard, and post submission features with email verification.',
 						'changelog'   => 'Testing auto plugin update notification.',
