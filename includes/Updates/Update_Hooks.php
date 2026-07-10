@@ -106,6 +106,23 @@ class Update_Hooks {
 		$correct_dir = 'oswp-news-portal';
 		$source_dir  = basename( $source );
 
+		// If the source is the same as the remote source (no subfolder in ZIP), create the subfolder structure
+		if ( untrailingslashit( $source ) === untrailingslashit( $remote_source ) ) {
+			$new_source = trailingslashit( $remote_source ) . $correct_dir;
+			if ( ! is_dir( $new_source ) ) {
+				mkdir( $new_source );
+			}
+
+			// Move all files/folders from remote_source into new_source (except new_source itself)
+			$files = scandir( $remote_source );
+			foreach ( $files as $file ) {
+				if ( '.' !== $file && '..' !== $file && $correct_dir !== $file ) {
+					rename( trailingslashit( $remote_source ) . $file, trailingslashit( $new_source ) . $file );
+				}
+			}
+			return $new_source;
+		}
+
 		if ( $source_dir === $correct_dir ) {
 			return $source;
 		}
@@ -142,10 +159,46 @@ class Update_Hooks {
 	}
 
 	/**
+	 * Bypasses downloading for local plugin packages.
+	 *
+	 * @param bool|string|\WP_Error $reply        The current download reply.
+	 * @param string                $package      The package URL.
+	 * @param \WP_Upgrader          $upgrader     The WP_Upgrader instance.
+	 * @param array                 $hook_extras  Extra arguments.
+	 *
+	 * @return bool|string|\WP_Error Local package path or original reply.
+	 */
+	public function upgrader_pre_download( $reply, $package, $upgrader, $hook_extras = [] ) {
+		if ( false !== $reply ) {
+			return $reply;
+		}
+
+		$plugin_basename = \plugin_basename( OSWP_POSTS_PLUGIN_FILE );
+
+		if ( empty( $hook_extras['plugin'] ) || $plugin_basename !== $hook_extras['plugin'] ) {
+			return $reply;
+		}
+
+		// Check if the package is a local zip file in the uploads directory
+		if ( strpos( $package, 'oswp-news-portal.zip' ) !== false ) {
+			$upload_dir = \wp_upload_dir();
+			if ( empty( $upload_dir['error'] ) ) {
+				$local_path = \trailingslashit( $upload_dir['basedir'] ) . 'oswp-news-portal.zip';
+				if ( \file_exists( $local_path ) ) {
+					return $local_path;
+				}
+			}
+		}
+
+		return $reply;
+	}
+
+	/**
 	 * Register hooks.
 	 */
 	public function register() {
 		add_action( 'upgrader_process_complete', [ $this, 'on_upgrader_process_complete' ], 10, 2 );
 		add_filter( 'upgrader_source_selection', [ $this, 'upgrader_source_selection' ], 10, 4 );
+		add_filter( 'upgrader_pre_download', [ $this, 'upgrader_pre_download' ], 10, 4 );
 	}
 }

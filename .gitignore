@@ -25,3 +25,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.swp
+portal/
+AI_AGENT.md

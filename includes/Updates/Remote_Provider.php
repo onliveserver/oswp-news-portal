@@ -150,14 +150,20 @@ class Remote_Provider {
 				return false;
 			}
 
+			$headers = [
+				'Accept'     => 'application/vnd.github.v3+json',
+				'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url(),
+			];
+
+			if ( defined( 'OSWP_GITHUB_TOKEN' ) && OSWP_GITHUB_TOKEN ) {
+				$headers['Authorization'] = 'token ' . OSWP_GITHUB_TOKEN;
+			}
+
 			$response = wp_remote_get(
 				$url,
 				[
 					'timeout' => 10,
-					'headers' => [
-						'Accept'     => 'application/vnd.github.v3+json',
-						'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url(),
-					],
+					'headers' => $headers,
 				]
 			);
 
