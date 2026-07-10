@@ -54,6 +54,14 @@ class Updater_Bootstrap {
 			// Initialize updater hooks
 			$updater->init();
 
+			// Disable SSL verification for localhost/local tests to prevent "SSL certificate problem: self-signed certificate"
+			add_filter( 'http_request_args', function( $args, $url ) {
+				if ( strpos( $url, 'localhost' ) !== false ) {
+					$args['sslverify'] = false;
+				}
+				return $args;
+			}, 10, 2 );
+
 			// Create version manager
 			$version_manager = new Version_Manager( 'oswp-news-portal' );
 
