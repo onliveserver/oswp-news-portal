@@ -103,13 +103,17 @@ class Update_Hooks {
 	 * @return string Source path.
 	 */
 	public function upgrader_source_selection( $source, $remote_source, $upgrader, $hook_extras = [] ) {
+		error_log( 'OSWP Debug - upgrader_source_selection called. Source: ' . $source . ', Remote Source: ' . $remote_source );
 		$correct_dir = 'oswp-news-portal';
 		$source_dir  = basename( $source );
 
 		// Check if this is our plugin folder (e.g. oswp-news-portal-main, oswp-news-portal-1.2.1)
 		if ( strpos( $source_dir, $correct_dir ) !== 0 ) {
+			error_log( 'OSWP Debug - Source dir does not match prefix: ' . $source_dir );
 			return $source;
 		}
+
+		error_log( 'OSWP Debug - Matches prefix. Renaming folder...' );
 
 		// Exclude portal folder by deleting it recursively from temporary folder
 		$portal_dir = trailingslashit( $source ) . 'portal';
@@ -131,7 +135,7 @@ class Update_Hooks {
 					rename( trailingslashit( $remote_source ) . $file, trailingslashit( $new_source ) . $file );
 				}
 			}
-			return $new_source;
+			return trailingslashit( $new_source );
 		}
 
 		if ( $source_dir === $correct_dir ) {
@@ -140,8 +144,16 @@ class Update_Hooks {
 
 		$new_source = trailingslashit( $remote_source ) . $correct_dir;
 
-		if ( rename( $source, $new_source ) ) {
-			return $new_source;
+		$source_clean = untrailingslashit( $source );
+		$new_source_clean = untrailingslashit( $new_source );
+
+		error_log( 'OSWP Debug - Renaming ' . $source_clean . ' to ' . $new_source_clean );
+		if ( rename( $source_clean, $new_source_clean ) ) {
+			error_log( 'OSWP Debug - Rename succeeded!' );
+			return trailingslashit( $new_source_clean );
+		} else {
+			$err = error_get_last();
+			error_log( 'OSWP Debug - Rename failed! Error: ' . ( $err ? $err['message'] : 'unknown' ) );
 		}
 
 		return $source;
