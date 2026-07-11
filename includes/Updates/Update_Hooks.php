@@ -103,9 +103,11 @@ class Update_Hooks {
 	 * @return string Source path.
 	 */
 	public function upgrader_source_selection( $source, $remote_source, $upgrader, $hook_extras = [] ) {
-		$plugin_basename = plugin_basename( OSWP_POSTS_PLUGIN_FILE );
+		$correct_dir = 'oswp-news-portal';
+		$source_dir  = basename( $source );
 
-		if ( empty( $hook_extras['plugin'] ) || $plugin_basename !== $hook_extras['plugin'] ) {
+		// Check if this is our plugin folder (e.g. oswp-news-portal-main, oswp-news-portal-1.2.1)
+		if ( strpos( $source_dir, $correct_dir ) !== 0 ) {
 			return $source;
 		}
 
@@ -114,9 +116,6 @@ class Update_Hooks {
 		if ( is_dir( $portal_dir ) ) {
 			$this->recursive_rmdir( $portal_dir );
 		}
-
-		$correct_dir = 'oswp-news-portal';
-		$source_dir  = basename( $source );
 
 		// If the source is the same as the remote source (no subfolder in ZIP), create the subfolder structure
 		if ( untrailingslashit( $source ) === untrailingslashit( $remote_source ) ) {
