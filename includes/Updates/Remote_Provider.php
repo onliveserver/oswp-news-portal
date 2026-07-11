@@ -143,7 +143,7 @@ class Remote_Provider {
 				return $cached;
 			}
 
-			$url = sprintf( 'https://api.github.com/repos/%s/%s/releases/latest', $this->owner, $this->repo );
+			$url = sprintf( 'https://raw.githubusercontent.com/%s/%s/main/oswp-news-portal.php', $this->owner, $this->repo );
 
 			// Validate URL
 			if ( ! wp_http_validate_url( $url ) ) {
@@ -151,11 +151,8 @@ class Remote_Provider {
 			}
 
 			$headers = [
-				'Accept'     => 'application/vnd.github.v3+json',
 				'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url(),
 			];
-
-
 
 			$response = wp_remote_get(
 				$url,
@@ -208,30 +205,28 @@ class Remote_Provider {
 
 			$body = wp_remote_retrieve_body( $response );
 			
-			// Validate JSON before decoding
+			// Validate response body
 			if ( empty( $body ) ) {
-				error_log( 'OSWP Update - Empty response body' );
+				error_log( 'OSWP Update - Empty raw response body' );
 				return false;
 			}
 
-			$release = json_decode( $body );
-
-			if ( null === $release || empty( $release->tag_name ) ) {
-				error_log( 'OSWP Update - Invalid GitHub Release JSON response: ' . $body );
+			if ( ! preg_match( '/Version:\s*([0-9.]+)/i', $body, $matches ) ) {
+				error_log( 'OSWP Update - Could not find Version header in raw response' );
 				return false;
 			}
 
-			$version = ltrim( $release->tag_name, 'v' );
+			$version = $matches[1];
 
 			$data = (object) [
 				'id'            => $this->plugin_slug,
 				'name'          => 'OSWP News Portal',
 				'version'       => $version,
-				'package'       => $release->zipball_url,
-				'url'           => $release->html_url,
+				'package'       => sprintf( 'https://github.com/%s/%s/archive/refs/heads/main.zip', $this->owner, $this->repo ),
+				'url'           => sprintf( 'https://github.com/%s/%s', $this->owner, $this->repo ),
 				'author'        => 'Onlive Server Development Team',
-				'description'   => $release->body,
-				'homepage'      => 'https://github.com/' . $this->owner . '/' . $this->repo,
+				'description'   => 'Latest features and updates directly from the main branch.',
+				'homepage'      => sprintf( 'https://github.com/%s/%s', $this->owner, $this->repo ),
 				'tested'        => '7.1',
 				'requires'      => '6.0',
 				'requires_php'  => '7.4',
@@ -245,7 +240,7 @@ class Remote_Provider {
 				],
 				'sections'      => [
 					'description' => 'Frontend news portal with registration, login, dashboard, and post submission features with email verification.',
-					'changelog'   => $release->body,
+					'changelog'   => 'Latest version pushed to GitHub main branch.',
 				],
 			];
 
