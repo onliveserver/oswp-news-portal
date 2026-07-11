@@ -155,9 +155,7 @@ class Remote_Provider {
 				'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url(),
 			];
 
-			if ( defined( 'OSWP_GITHUB_TOKEN' ) && OSWP_GITHUB_TOKEN ) {
-				$headers['Authorization'] = 'token ' . OSWP_GITHUB_TOKEN;
-			}
+
 
 			$response = wp_remote_get(
 				$url,

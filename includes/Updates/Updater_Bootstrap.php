@@ -99,18 +99,9 @@ class Updater_Bootstrap {
 			$updater->init();
 
 			// Disable SSL verification for localhost/local tests to prevent "SSL certificate problem: self-signed certificate"
-			// Also add Authorization header for GitHub private repository requests if token is defined
 			add_filter( 'http_request_args', function( $args, $url ) {
 				if ( strpos( $url, 'localhost' ) !== false ) {
 					$args['sslverify'] = false;
-				}
-				if ( defined( 'OSWP_GITHUB_TOKEN' ) && OSWP_GITHUB_TOKEN ) {
-					if ( strpos( $url, 'api.github.com' ) !== false || strpos( $url, 'codeload.github.com' ) !== false ) {
-						if ( ! isset( $args['headers'] ) ) {
-							$args['headers'] = [];
-						}
-						$args['headers']['Authorization'] = 'token ' . OSWP_GITHUB_TOKEN;
-					}
 				}
 				return $args;
 			}, 10, 2 );

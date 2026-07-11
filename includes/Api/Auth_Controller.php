@@ -51,7 +51,7 @@ class Auth_Controller {
 		register_rest_route( self::NAMESPACE, '/auth/logout', [
 			'methods'             => 'POST',
 			'callback'            => [ $this, 'logout' ],
-			'permission_callback' => 'is_user_logged_in',
+			'permission_callback' => '__return_true',
 		] );
 
 		register_rest_route( self::NAMESPACE, '/auth/forgot-password', [
